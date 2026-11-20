@@ -25,7 +25,7 @@ Fonte: [iefponline, ofertas de formação](https://iefponline.iefp.pt/IEFP/pesqu
 | Curso | Área | Duração | Início previsto | Modalidade | Certificação | Acesso | Link |
 |---|---|---|---|---|---|---|---|
 | Técnico de Desenvolvimento de Software | Ciências Informáticas | 3525 h, presencial | 23/11/2026 | Sistema de Aprendizagem | 12.º ano e Nível 4 | 9.º a 12.º ano (exclusive), 14 a 29 anos | [288807](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288807) |
-| Técnico Especialista em Automação, Robótica e Manutenção Industrial | Metalurgia e Metalomecânica | 1518 h, presencial | 10/11/2026 | Cursos de Aprendizagem + | Nível 5 | 12.º ano ou nível 5, 18 a 29 anos | [283870](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870) |
+| Técnico Especialista em Automação, Robótica e Manutenção Industrial | Metalurgia e Metalomecânica | 1518 h, presencial (500 h de estágio, segundo a [publicação do centro](https://www.instagram.com/riomeaocontigo_iefp/reel/DeiQL90Ixlt/)) | 10/11/2026 | Cursos de Aprendizagem + | Nível 5 | 12.º ano ou nível 5, 18 a 29 anos | [283870](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870) |
 | Técnico de Instalações Elétricas | Eletricidade e Energia | 1538 h, presencial | 04/11/2026 | Cursos EFA NS Profissional | Nível 4 | 12.º ano, 18 ou mais anos | [289791](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=289791) |
 | Operador de Jardinagem | Floricultura e Jardinagem | 1470 h, presencial | 26/10/2026 | Cursos EFA B3 Dupla Certificação | 9.º ano e Nível 2 | 6.º ano, 18 ou mais anos | [288049](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288049) |
 | UX/UI Design | (a confirmar) | 325 h | 06/07/2026 | (a confirmar) | (a confirmar) | (a confirmar) | Plataforma FAD do IEFP (página privada, só com sessão iniciada) |
@@ -63,4 +63,10 @@ Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_i
 
 ## Fotos
 
-Ainda por recolher.
+Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/), descarregadas a 20/11/2026.
+
+| Ficheiro | Origem | Notas |
+|---|---|---|
+| noticia-worldskills.jpg | Capa do [reel de 29/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DfGGSIWuxKd/) | 360×640, provisória (tem o ícone ▶) |
+| noticia-house-of-fashion.jpg | 1.ª foto do [post de 29/10/2026](https://www.instagram.com/riomeaocontigo_iefp/p/DfGD2xRjn6M/) | 640×640, provisória |
+| noticia-congresso.jpg | Capa do [reel de 17/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DemyQguu6rY/) | 360×640, provisória (tem o ícone ▶) |
