@@ -16,7 +16,7 @@ Fonte: [iefp.pt, página do serviço](https://www.iefp.pt/detalheservico?id=3236
 | Coordenadas GPS | N 40° 57.5615, W 8° 35.6235 | ✅ |
 | Estrutura | Delegação Regional do Norte, Centro de Emprego e Formação Profissional de Entre Douro e Vouga | ✅ |
 | Contacto por mensagem | Através do iefponline, opção «Contactar o IEFP» | ✅ |
-| Email sfp.riomeao@iefp.pt | Aparece em diretórios, não na página oficial | ⚠️ |
+| Email | sfp.riomeao@iefp.pt. Não está no iefp.pt, mas o próprio centro publica-o no Instagram ([publicação de 15/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DeiQL90Ixlt/)) | ✅ |
 
 ## Cursos
 
@@ -46,7 +46,20 @@ Atenção: as ofertas no iefponline mudam com o tempo. Antes da entrega, voltar 
 |---|---|---|
 | IEFP Portugal (nacional) | [instagram.com/iefp_portugal](https://www.instagram.com/iefp_portugal/) | ✅ ligado a partir do iefp.pt |
 | IEFP Portugal (nacional) | [facebook.com/iefp.pt](https://www.facebook.com/iefp.pt/) | ✅ ligado a partir do iefp.pt |
-| Conta própria do Rio Meão | Não encontrada em pesquisa pública | por confirmar |
+| Centro de Emprego e Formação Profissional de Entre Douro e Vouga (conta do Rio Meão, hashtag #riomeaocontigo) | [instagram.com/riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/) | ✅ conta do próprio centro |
+
+## Publicações candidatas para as Notícias
+
+Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/), legendas lidas a 20/11/2026.
+
+| Data | Assunto | Link |
+|---|---|---|
+| 29/10/2026 | Leonor Silva, formanda de Cabeleireiro, representou Portugal no WorldSkills em Xangai | [reel](https://www.instagram.com/riomeaocontigo_iefp/reel/DfGGSIWuxKd/) |
+| 29/10/2026 | Formandos de Estética, Cabeleireiro e Multimédia nos bastidores do The House of Fashion (24/10, IMC Models) | [post](https://www.instagram.com/riomeaocontigo_iefp/p/DfGD2xRjn6M/) |
+| 17/10/2026 | Formandos no 26.º Congresso Internacional «Formação para o Trabalho» | [reel](https://www.instagram.com/riomeaocontigo_iefp/reel/DemyQguu6rY/) |
+| 15/10/2026 | Divulgação do curso de Automação, Robótica e Manutenção Industrial (nível 5, 12 meses, 500 h de estágio, 18 a 29 anos) | [reel](https://www.instagram.com/riomeaocontigo_iefp/reel/DeiQL90Ixlt/) |
+| 08/10/2026 | Formandas do Curso Técnico de Ação Educativa em atividades práticas | [reel](https://www.instagram.com/riomeaocontigo_iefp/reel/DePYP9ruE_O/) |
+| 19/09/2026 | Colaboradores do IEFP no Parque Ambiental do Buçaquinho (pilates e convívio) | [reel](https://www.instagram.com/riomeaocontigo_iefp/reel/Ddeng1dugv7/) |
 
 ## Fotos
 
