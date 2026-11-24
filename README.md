@@ -110,6 +110,21 @@ Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e a seta d
 
 Todas usam a declaração abreviada `transition` com várias propriedades. Quem tem a opção «reduzir movimento» ligada no sistema não vê as animações (`prefers-reduced-motion`).
 
+### Teste de acessibilidade
+
+Testei o site publicado no [AccessMonitor](https://accessmonitor.acessibilidade.gov.pt/), o validador oficial português das WCAG 2.1, o mesmo que o IEFP usa para avaliar o iefp.pt ([declaração de acessibilidade do IEFP](https://www.iefp.pt/acessibilidade)).
+
+**Resultado a 24/11/2026: 10 em 10.** 35 práticas encontradas: 29 aceitáveis, 0 não aceitáveis e 6 para ver manualmente. Estas 6 foram verificadas à mão:
+
+| Prática para ver manualmente | Verificação |
+|---|---|
+| O primeiro link salta para o conteúdo principal | Sim, é o link «Saltar para o conteúdo» |
+| 12 links para contornar blocos de conteúdo | São os links do menu e do rodapé para as secções |
+| 1 imagem com `alt=""` | É o símbolo do IEFP no cabeçalho. O nome «IEFP Rio Meão» já está escrito ao lado, por isso a imagem é decorativa |
+| Idioma marcado como `pt-PT` | Correto |
+| 21 cabeçalhos na página | A ordem h1 → h2 → h3 não tem saltos |
+| 33 combinações abaixo do contraste AAA (7:1) | O nível pedido é o AA (4,5:1) e todas o cumprem. O AAA é opcional |
+
 ## 9. Fontes
 
 A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo:
