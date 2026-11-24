@@ -314,7 +314,7 @@ section[id] {
    da deslocação da bola funcionar em qualquer tamanho. */
 .tema-botao {
     --tema-largura: 9.75rem;
-    --tema-bola: 2rem;
+    --tema-bola: 2.25rem;
     --tema-folga: 0.25rem;
 
     position: relative;
@@ -340,33 +340,91 @@ section[id] {
                 padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* A bola é uma pequena janela com uma paisagem.
+   As cores da cena ficam em variáveis: de noite só mudam os valores
+   (a mesma ideia do modo escuro do site inteiro). */
 .tema-bola {
+    --ceu: #a5cf4c;
+    --colina-tras: #e9f3cf;
+    --colina-frente: #fbfdf4;
+    --halo: rgb(255 213 74 / 0.75);
+
     position: absolute;
     top: var(--tema-folga);
     left: var(--tema-folga);
-    display: grid;
-    place-items: center;
     width: var(--tema-bola);
     height: var(--tema-bola);
+    overflow: hidden; /* corta o sol, a lua e as colinas no círculo */
+    border: 2px solid #ffffff;
     border-radius: 50%;
-    background-color: #f3f7f4;
-    color: #1c2420;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+    background-color: var(--ceu);
+    box-shadow: 0 0 8px 2px var(--halo);
     /* A bola desliza com um pequeno ressalto no fim */
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.4s ease,
-                color 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.5s ease,
+                box-shadow 0.5s ease;
 }
 
-/* Lua e sol ocupam o mesmo sítio; um roda e desaparece, o outro aparece */
-.tema-bola i {
-    grid-area: 1 / 1;
-    transition: opacity 0.3s ease, transform 0.4s ease;
+/* Sol: círculo branco com brilho */
+.cena-astro {
+    position: absolute;
+    top: 18%;
+    right: 18%;
+    width: 34%;
+    height: 34%;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 6px 2px rgb(255 255 255 / 0.8);
+    transition: box-shadow 0.5s ease;
 }
 
-.tema-sol {
+/* Lua: um segundo círculo da cor do céu entra por cima do sol
+   e deixa à vista só um crescente */
+.cena-astro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: var(--ceu);
+    transform: translate(130%, -130%);
+    transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+/* Colinas: elipses largas que saem pelo fundo do círculo */
+.cena-colina {
+    position: absolute;
+    border-radius: 50%;
+    transition: background-color 0.5s ease;
+}
+
+.cena-colina-tras {
+    left: -30%;
+    bottom: -28%;
+    width: 110%;
+    height: 62%;
+    background-color: var(--colina-tras);
+}
+
+.cena-colina-frente {
+    right: -40%;
+    bottom: -38%;
+    width: 130%;
+    height: 66%;
+    background-color: var(--colina-frente);
+}
+
+/* Estrelas: um ponto e mais dois feitos com box-shadow */
+.cena-estrelas {
+    position: absolute;
+    top: 22%;
+    left: 22%;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 7px 6px 0 0 #ffffff, 2px 11px 0 0 rgb(255 255 255 / 0.7);
     opacity: 0;
-    transform: rotate(-90deg) scale(0.5);
+    transition: opacity 0.5s ease 0.15s;
 }
 
 .tema-botao:hover {
@@ -383,19 +441,24 @@ section[id] {
 }
 
 .tema-input:checked + .tema-botao .tema-bola {
+    --ceu: #0b3d20;
+    --colina-tras: #2f6b45;
+    --colina-frente: #1d5233;
+    --halo: rgb(140 200 255 / 0.55);
+
     transform: translateX(calc(var(--tema-largura) - var(--tema-bola) - 2 * var(--tema-folga)));
-    background-color: #0b3d20;
-    color: #ffd54a;
 }
 
-.tema-input:checked + .tema-botao .tema-lua {
-    opacity: 0;
-    transform: rotate(90deg) scale(0.5);
+.tema-input:checked + .tema-botao .cena-astro {
+    box-shadow: 0 0 5px 1px rgb(255 255 255 / 0.45);
 }
 
-.tema-input:checked + .tema-botao .tema-sol {
+.tema-input:checked + .tema-botao .cena-astro::after {
+    transform: translate(32%, -22%);
+}
+
+.tema-input:checked + .tema-botao .cena-estrelas {
     opacity: 1;
-    transform: rotate(0) scale(1);
 }
 
 /* A checkbox está escondida: o foco do teclado aparece no botão */

@@ -38,13 +38,17 @@
                 <!-- Modo noturno sem JavaScript: o CSS lê o estado desta checkbox com :has().
                      Fica fora do menu para estar sempre visível, também no telemóvel. -->
                 <!-- A checkbox fica escondida; o <label> é o botão que se vê.
-                     A bola desliza e troca a lua pelo sol quando o modo escuro liga. -->
+                     A bola desliza e a paisagem passa de dia a noite quando o modo escuro liga. -->
                 <div class="theme-switch">
                     <input class="tema-input" type="checkbox" role="switch" id="modo-escuro">
                     <label class="tema-botao" for="modo-escuro">
+                        <!-- Pequena janela com uma paisagem: de dia sol e céu verde,
+                             de noite lua, estrelas e céu escuro. Só decoração (aria-hidden). -->
                         <span class="tema-bola" aria-hidden="true">
-                            <i class="bi bi-moon-stars-fill tema-lua"></i>
-                            <i class="bi bi-sun-fill tema-sol"></i>
+                            <span class="cena-estrelas"></span>
+                            <span class="cena-astro"></span>
+                            <span class="cena-colina cena-colina-tras"></span>
+                            <span class="cena-colina cena-colina-frente"></span>
                         </span>
                         <span class="tema-texto">Modo escuro</span>
                     </label>
