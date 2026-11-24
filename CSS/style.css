@@ -10,7 +10,7 @@
    5. Botões
    6. Secções
    7. Cartões
-   8. Detalhes dos cursos
+   8. Composições em HTML e CSS
    9. Formulário e contactos
    10. Rodapé
    11. Acessibilidade
@@ -354,12 +354,6 @@ figure {
     color: var(--cor-texto-suave);
 }
 
-.hero-foto img,
-.sobre-foto img {
-    width: 100%;
-    border-radius: var(--raio-grande);
-}
-
 /* Lista de objetivos com visto */
 .lista-check {
     list-style: none;
@@ -425,7 +419,7 @@ figure {
    fundo do cartão, mesmo com textos de tamanhos diferentes.
    ===================================================================== */
 .cartao-area,
-.cartao-curso,
+.cartao-face,
 .cartao-noticia {
     display: flex;
     flex-direction: column;
@@ -441,6 +435,7 @@ figure {
    (junta-se à transição de cor do modo, por isso repete-a) */
 .cartao-area,
 .cartao-curso,
+.cartao-face,
 .cartao-noticia {
     transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
                 transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -452,11 +447,15 @@ figure {
 .cartao-curso:hover,
 .cartao-noticia:hover {
     transform: translateY(-4px);
+}
+
+.cartao-area:hover,
+.cartao-curso:hover .cartao-face,
+.cartao-noticia:hover {
     box-shadow: var(--sombra-hover);
 }
 
 .cartao-area > a,
-.cartao-curso > .btn,
 .cartao-noticia > a:last-child {
     margin-top: auto;
 }
@@ -510,8 +509,116 @@ figure {
     font-size: 0.9rem;
 }
 
-.cartao-curso > .btn {
-    align-self: flex-start;
+/* ---------- Cartões de cursos que viram (sem JavaScript) ----------
+   1. .cartao-curso dá a perspetiva 3D.
+   2. .cartao-curso-interior é uma grelha com uma só célula: a frente e o
+      verso ficam um em cima do outro e o cartão fica com a altura do maior.
+   3. backface-visibility esconde o lado que está de costas.
+   4. Quando a checkbox está marcada, o interior roda 180°. */
+.cartao-curso {
+    perspective: 1200px;
+}
+
+.cartao-curso-interior {
+    display: grid;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* TRANSIÇÃO 4 · rotação do cartão */
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.cartao-face {
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+}
+
+.cartao-verso {
+    transform: rotateY(180deg);
+    /* O verso fica escondido também para o teclado e leitores de ecrã;
+       visibility muda a meio da rotação (atraso de 0,3 s) */
+    visibility: hidden;
+    transition: visibility 0s linear 0.3s;
+}
+
+.virar-input:checked + .cartao-curso-interior {
+    transform: rotateY(180deg);
+}
+
+.virar-input:checked + .cartao-curso-interior .cartao-verso {
+    visibility: visible;
+}
+
+.virar-input:checked + .cartao-curso-interior .cartao-frente {
+    visibility: hidden;
+    transition: visibility 0s linear 0.3s;
+}
+
+/* Seta redonda que vira o cartão (é um <label> da checkbox) */
+.botao-virar {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: auto;
+    align-self: flex-end;
+    border-radius: 50%;
+    background-color: var(--cor-botao);
+    color: var(--cor-botao-texto);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-out;
+}
+
+.botao-virar:hover {
+    background-color: var(--cor-botao-hover);
+    transform: translateX(3px);
+}
+
+.botao-voltar:hover {
+    transform: translateX(-3px);
+}
+
+/* A checkbox está escondida, por isso o foco do teclado aparece na seta */
+.virar-input:focus-visible + .cartao-curso-interior .botao-virar {
+    outline: 3px solid var(--cor-foco);
+    outline-offset: 3px;
+}
+
+/* Verso: ficha do curso em CSS Grid (campo | valor) */
+.cartao-verso dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.3rem 0.75rem;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.cartao-verso dt {
+    font-weight: 600;
+    color: var(--cor-titulo);
+}
+
+.cartao-verso dd {
+    margin: 0;
+}
+
+.verso-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+}
+
+.verso-rodape .botao-virar {
+    margin-top: 0;
+    order: 2;
+}
+
+.verso-rodape a {
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 /* Cartões de notícias: fotos com o mesmo formato, mesmo as verticais */
@@ -532,30 +639,95 @@ figure {
 
 
 /* =====================================================================
-   8. DETALHES DOS CURSOS
-   CSS Grid: nome do campo numa coluna, valor na outra.
+   8. COMPOSIÇÕES EM HTML E CSS (no lugar das fotos, provisórias)
    ===================================================================== */
-.detalhe dl {
+
+/* Mosaico do hero: CSS Grid 2 x 2, a primeira peça ocupa 2 linhas */
+.mosaico {
     display: grid;
-    grid-template-columns: minmax(9rem, max-content) 1fr;
-    gap: 0.4rem 1rem;
-    padding-left: 1rem;
-    border-left: 3px solid var(--cor-destaque);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, minmax(6.5rem, auto));
+    gap: 1rem;
 }
 
-.detalhe dt {
-    font-weight: 600;
-    color: var(--cor-titulo);
+.mosaico-peca {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    border-radius: var(--raio-grande);
+    color: #ffffff;
+    font-family: var(--fonte-titulos);
+    font-weight: 700;
+    font-size: 1.15rem;
 }
 
-.detalhe dd {
+.mosaico-peca i {
+    font-size: 2rem;
+}
+
+.peca-jovens {
+    grid-row: span 2;
+    background-color: #0060a9;
+}
+
+.peca-adultos {
+    background-color: #26872e;
+}
+
+.peca-qualifica {
+    background-color: #027eb0;
+}
+
+.peca-local {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #00662b;
+}
+
+/* As peças usam as cores originais do IEFP nos dois modos
+   (texto branco tem contraste suficiente em todas). No modo noturno
+   escurecem um pouco para não encandear. */
+:root:has(#modo-escuro:checked) .mosaico-peca {
+    filter: brightness(0.85);
+}
+
+/* Cartão com a morada (secção Sobre nós) */
+.cartao-morada {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: var(--raio-grande);
+    background-color: var(--cor-cartao);
+    border: 1px solid var(--cor-borda);
+    border-left: 6px solid var(--cor-destaque);
+    box-shadow: var(--sombra);
+}
+
+.cartao-morada i {
+    font-size: 2.5rem;
+    color: var(--cor-destaque);
+}
+
+.cartao-morada p {
     margin: 0;
 }
 
-.detalhe > a {
-    display: inline-block;
-    margin-right: 1.25rem;
-    font-weight: 600;
+.cartao-morada-titulo {
+    margin-top: 0.75rem !important;
+    font-family: var(--fonte-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-titulo);
+}
+
+.cartao-morada-rede {
+    margin-top: 1rem !important;
+    padding-top: 1rem;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
 }
 
 
@@ -695,6 +867,7 @@ button:focus-visible,
         transition-duration: 0.01ms !important;
     }
 
+    .botao-virar:hover,
     .btn:hover,
     .cartao-area:hover,
     .cartao-curso:hover,
@@ -751,14 +924,9 @@ button:focus-visible,
         justify-content: center;
     }
 
-    /* Na ficha do curso o nome do campo passa para cima do valor */
-    .detalhe dl {
-        grid-template-columns: 1fr;
-        gap: 0.1rem;
-    }
-
-    .detalhe dd {
-        margin-bottom: 0.6rem;
+    /* Mosaico do hero mais baixo no telemóvel */
+    .mosaico {
+        grid-template-rows: repeat(3, minmax(5rem, auto));
     }
 }
 

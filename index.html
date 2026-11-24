@@ -52,7 +52,7 @@
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item"><a class="nav-link" href="#sobre">Sobre nós</a></li>
                         <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#noticias">Notícias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#noticias">Feed</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contactos">Contactos</a></li>
                     </ul>
                 </div>
@@ -78,10 +78,26 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
-                        <!-- Provisório: trocar por foto real do centro (fonte a registar) -->
-                        <figure class="hero-foto">
-                            <img class="img-fluid" src="images/hero.svg" alt="Ilustração de formandos numa oficina e numa sala com computadores">
-                        </figure>
+                        <!-- Composição visual feita em HTML e CSS (provisória, até haver foto real).
+                             role="img" + aria-label: o leitor de ecrã lê só a descrição. -->
+                        <div class="mosaico" role="img" aria-label="Mosaico com as três áreas do centro: jovens dos 14 aos 29 anos, adultos em cursos EFA e Centro Qualifica com RVCC">
+                            <div class="mosaico-peca peca-jovens">
+                                <i class="bi bi-backpack" aria-hidden="true"></i>
+                                <span>14–29 anos</span>
+                            </div>
+                            <div class="mosaico-peca peca-adultos">
+                                <i class="bi bi-briefcase" aria-hidden="true"></i>
+                                <span>Cursos EFA</span>
+                            </div>
+                            <div class="mosaico-peca peca-qualifica">
+                                <i class="bi bi-patch-check" aria-hidden="true"></i>
+                                <span>RVCC</span>
+                            </div>
+                            <div class="mosaico-peca peca-local">
+                                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                                <span>Rio Meão</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,10 +139,13 @@
             <div class="container">
                 <div class="row gx-4 gy-5 align-items-center">
                     <div class="col-12 col-lg-5">
-                        <!-- Provisório: trocar por foto real do edifício (fonte a registar) -->
-                        <figure class="sobre-foto">
-                            <img class="img-fluid" src="images/sobre.svg" alt="Ilustração do edifício de um centro de formação com árvores à volta">
-                        </figure>
+                        <!-- Composição em HTML e CSS (provisória, até haver foto do edifício) -->
+                        <div class="cartao-morada" role="img" aria-label="Cartão com a localização do centro: Avenida de Santiago, 88, Rio Meão, Centro de Emprego e Formação Profissional de Entre Douro e Vouga">
+                            <i class="bi bi-building" aria-hidden="true"></i>
+                            <p class="cartao-morada-titulo">Av. de Santiago, 88</p>
+                            <p>4520-462 Rio Meão</p>
+                            <p class="cartao-morada-rede">Centro de Emprego e Formação Profissional de Entre Douro e Vouga</p>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-7">
                         <h2 id="titulo-sobre">Sobre nós</h2>
@@ -153,123 +172,176 @@
                 <p>Alguns dos cursos com início previsto para o outono de 2026. A lista completa está no <a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&amp;ccentro=195" target="_blank" rel="noopener noreferrer">iefponline<span class="visually-hidden"> (abre num novo separador)</span></a>.</p>
 
                 <!-- Dados do iefponline, consultados a 20/11/2026 (ver FONTES.md) -->
+                <!-- Cartões que viram sem JavaScript: cada cartão tem uma checkbox escondida.
+                     As setas são <label> dessa checkbox; ao clicar, a checkbox fica marcada
+                     e o CSS (.virar-input:checked + ...) roda só esse cartão. -->
                 <!-- 1 coluna no telemóvel, 2 no tablet, 4 no computador -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
                     <div class="col">
-                        <article class="cartao-curso h-100">
-                            <p class="curso-area">Ciências Informáticas</p>
-                            <h3 class="h5">Técnico/a de Desenvolvimento de Software</h3>
-                            <ul class="curso-meta">
-                                <li><i class="bi bi-clock" aria-hidden="true"></i> 3525 horas</li>
-                                <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-23">23 nov 2026</time></li>
-                            </ul>
-                            <p>Curso do Sistema de Aprendizagem para jovens dos 14 aos 29 anos. Dá equivalência ao 12.º ano.</p>
-                            <a class="btn btn-principal btn-sm" href="#curso-software">Saber mais<span class="visually-hidden"> sobre Técnico/a de Desenvolvimento de Software</span></a>
+                        <article class="cartao-curso h-100" aria-labelledby="titulo-software">
+                            <input class="virar-input visually-hidden" type="checkbox" id="virar-software">
+                            <div class="cartao-curso-interior">
+                                <!-- Frente -->
+                                <div class="cartao-face cartao-frente">
+                                    <p class="curso-area">Ciências Informáticas</p>
+                                    <h3 class="h5" id="titulo-software">Técnico/a de Desenvolvimento de Software</h3>
+                                    <ul class="curso-meta">
+                                        <li><i class="bi bi-clock" aria-hidden="true"></i> 3525 horas</li>
+                                        <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-23">23 nov 2026</time></li>
+                                    </ul>
+                                    <p>Curso do Sistema de Aprendizagem para jovens dos 14 aos 29 anos. Dá equivalência ao 12.º ano.</p>
+                                    <label class="botao-virar" for="virar-software">
+                                        <span class="visually-hidden">Saber mais sobre Técnico/a de Desenvolvimento de Software</span>
+                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                                <!-- Verso: dl é uma lista de pares «campo: valor» -->
+                                <div class="cartao-face cartao-verso">
+                                    <p class="curso-area">Detalhes do curso</p>
+                                    <dl>
+                                        <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
+                                        <dt>Acesso</dt><dd>Do 9.º ano ao 12.º ano incompleto, dos 14 aos 29 anos</dd>
+                                        <dt>Modalidade</dt><dd>Sistema de Aprendizagem</dd>
+                                        <dt>Certificação</dt><dd>12.º ano e nível 4</dd>
+                                        <dt>Regime</dt><dd>Presencial, horário laboral</dd>
+                                    </dl>
+                                    <div class="verso-rodape">
+                                        <label class="botao-virar botao-voltar" for="virar-software">
+                                            <span class="visually-hidden">Voltar à frente do cartão</span>
+                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                                        </label>
+                                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288807" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a de Desenvolvimento de Software (abre num novo separador)</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     </div>
                     <div class="col">
-                        <article class="cartao-curso h-100">
-                            <p class="curso-area">Metalurgia e Metalomecânica</p>
-                            <h3 class="h5">Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</h3>
-                            <ul class="curso-meta">
-                                <li><i class="bi bi-clock" aria-hidden="true"></i> 1518 horas</li>
-                                <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-10">10 nov 2026</time></li>
-                            </ul>
-                            <p>Curso de nível 5 para quem já tem o 12.º ano. Inclui 500 horas de estágio.</p>
-                            <a class="btn btn-principal btn-sm" href="#curso-automacao">Saber mais<span class="visually-hidden"> sobre Automação, Robótica e Manutenção Industrial</span></a>
+                        <article class="cartao-curso h-100" aria-labelledby="titulo-automacao">
+                            <input class="virar-input visually-hidden" type="checkbox" id="virar-automacao">
+                            <div class="cartao-curso-interior">
+                                <!-- Frente -->
+                                <div class="cartao-face cartao-frente">
+                                    <p class="curso-area">Metalurgia e Metalomecânica</p>
+                                    <h3 class="h5" id="titulo-automacao">Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</h3>
+                                    <ul class="curso-meta">
+                                        <li><i class="bi bi-clock" aria-hidden="true"></i> 1518 horas</li>
+                                        <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-10">10 nov 2026</time></li>
+                                    </ul>
+                                    <p>Curso de nível 5 para quem já tem o 12.º ano. Inclui 500 horas de estágio.</p>
+                                    <label class="botao-virar" for="virar-automacao">
+                                        <span class="visually-hidden">Saber mais sobre Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</span>
+                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                                <!-- Verso: dl é uma lista de pares «campo: valor» -->
+                                <div class="cartao-face cartao-verso">
+                                    <p class="curso-area">Detalhes do curso</p>
+                                    <dl>
+                                        <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
+                                        <dt>Acesso</dt><dd>12.º ano ou nível 5, dos 18 aos 29 anos</dd>
+                                        <dt>Modalidade</dt><dd>Cursos de Aprendizagem +</dd>
+                                        <dt>Certificação</dt><dd>Nível 5</dd>
+                                        <dt>Regime</dt><dd>Presencial, horário laboral, 12 meses com 500 horas de estágio</dd>
+                                    </dl>
+                                    <div class="verso-rodape">
+                                        <label class="botao-virar botao-voltar" for="virar-automacao">
+                                            <span class="visually-hidden">Voltar à frente do cartão</span>
+                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                                        </label>
+                                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a Especialista em Automação, Robótica e Manutenção Industrial (abre num novo separador)</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     </div>
                     <div class="col">
-                        <article class="cartao-curso h-100">
-                            <p class="curso-area">Eletricidade e Energia</p>
-                            <h3 class="h5">Técnico/a de Instalações Elétricas</h3>
-                            <ul class="curso-meta">
-                                <li><i class="bi bi-clock" aria-hidden="true"></i> 1538 horas</li>
-                                <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-04">4 nov 2026</time></li>
-                            </ul>
-                            <p>Curso EFA para adultos com o 12.º ano. Dá certificação profissional de nível 4.</p>
-                            <a class="btn btn-principal btn-sm" href="#curso-eletricidade">Saber mais<span class="visually-hidden"> sobre Técnico/a de Instalações Elétricas</span></a>
+                        <article class="cartao-curso h-100" aria-labelledby="titulo-eletricidade">
+                            <input class="virar-input visually-hidden" type="checkbox" id="virar-eletricidade">
+                            <div class="cartao-curso-interior">
+                                <!-- Frente -->
+                                <div class="cartao-face cartao-frente">
+                                    <p class="curso-area">Eletricidade e Energia</p>
+                                    <h3 class="h5" id="titulo-eletricidade">Técnico/a de Instalações Elétricas</h3>
+                                    <ul class="curso-meta">
+                                        <li><i class="bi bi-clock" aria-hidden="true"></i> 1538 horas</li>
+                                        <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-04">4 nov 2026</time></li>
+                                    </ul>
+                                    <p>Curso EFA para adultos com o 12.º ano. Dá certificação profissional de nível 4.</p>
+                                    <label class="botao-virar" for="virar-eletricidade">
+                                        <span class="visually-hidden">Saber mais sobre Técnico/a de Instalações Elétricas</span>
+                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                                <!-- Verso: dl é uma lista de pares «campo: valor» -->
+                                <div class="cartao-face cartao-verso">
+                                    <p class="curso-area">Detalhes do curso</p>
+                                    <dl>
+                                        <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
+                                        <dt>Acesso</dt><dd>12.º ano, a partir dos 18 anos</dd>
+                                        <dt>Modalidade</dt><dd>Curso EFA de nível secundário, profissional</dd>
+                                        <dt>Certificação</dt><dd>Nível 4</dd>
+                                        <dt>Regime</dt><dd>Presencial, horário laboral</dd>
+                                    </dl>
+                                    <div class="verso-rodape">
+                                        <label class="botao-virar botao-voltar" for="virar-eletricidade">
+                                            <span class="visually-hidden">Voltar à frente do cartão</span>
+                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                                        </label>
+                                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=289791" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a de Instalações Elétricas (abre num novo separador)</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     </div>
                     <div class="col">
-                        <article class="cartao-curso h-100">
-                            <p class="curso-area">Floricultura e Jardinagem</p>
-                            <h3 class="h5">Operador/a de Jardinagem</h3>
-                            <ul class="curso-meta">
-                                <li><i class="bi bi-clock" aria-hidden="true"></i> 1470 horas</li>
-                                <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-10-26">26 out 2026</time></li>
-                            </ul>
-                            <p>Curso EFA de dupla certificação para adultos com o 6.º ano. Dá o 9.º ano e o nível 2.</p>
-                            <a class="btn btn-principal btn-sm" href="#curso-jardinagem">Saber mais<span class="visually-hidden"> sobre Operador/a de Jardinagem</span></a>
+                        <article class="cartao-curso h-100" aria-labelledby="titulo-jardinagem">
+                            <input class="virar-input visually-hidden" type="checkbox" id="virar-jardinagem">
+                            <div class="cartao-curso-interior">
+                                <!-- Frente -->
+                                <div class="cartao-face cartao-frente">
+                                    <p class="curso-area">Floricultura e Jardinagem</p>
+                                    <h3 class="h5" id="titulo-jardinagem">Operador/a de Jardinagem</h3>
+                                    <ul class="curso-meta">
+                                        <li><i class="bi bi-clock" aria-hidden="true"></i> 1470 horas</li>
+                                        <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-10-26">26 out 2026</time></li>
+                                    </ul>
+                                    <p>Curso EFA de dupla certificação para adultos com o 6.º ano. Dá o 9.º ano e o nível 2.</p>
+                                    <label class="botao-virar" for="virar-jardinagem">
+                                        <span class="visually-hidden">Saber mais sobre Operador/a de Jardinagem</span>
+                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                                <!-- Verso: dl é uma lista de pares «campo: valor» -->
+                                <div class="cartao-face cartao-verso">
+                                    <p class="curso-area">Detalhes do curso</p>
+                                    <dl>
+                                        <dt>Destinatários</dt><dd>Desempregados</dd>
+                                        <dt>Acesso</dt><dd>6.º ano, a partir dos 18 anos</dd>
+                                        <dt>Modalidade</dt><dd>Curso EFA B3 de dupla certificação</dd>
+                                        <dt>Certificação</dt><dd>9.º ano e nível 2</dd>
+                                        <dt>Regime</dt><dd>Presencial, horário laboral</dd>
+                                    </dl>
+                                    <div class="verso-rodape">
+                                        <label class="botao-virar botao-voltar" for="virar-jardinagem">
+                                            <span class="visually-hidden">Voltar à frente do cartão</span>
+                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                                        </label>
+                                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288049" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Operador/a de Jardinagem (abre num novo separador)</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Destino dos botões «Saber mais» -->
-        <section id="detalhes" class="secao secao-alt" aria-labelledby="titulo-detalhes">
-            <div class="container">
-                <h2 id="titulo-detalhes">Detalhes dos cursos</h2>
-
-                <!-- dl: lista de pares «nome: valor», adequada a fichas de informação -->
-                <div class="row g-4">
-                    <article id="curso-software" class="col-12 col-lg-6 detalhe">
-                        <h3 class="h5">Técnico/a de Desenvolvimento de Software</h3>
-                        <dl>
-                            <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
-                            <dt>Condições de acesso</dt><dd>Do 9.º ano ao 12.º ano incompleto, dos 14 aos 29 anos</dd>
-                            <dt>Modalidade</dt><dd>Sistema de Aprendizagem</dd>
-                            <dt>Certificação</dt><dd>12.º ano e nível 4</dd>
-                            <dt>Regime</dt><dd>Presencial, horário laboral</dd>
-                        </dl>
-                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288807" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden"> (abre num novo separador)</span></a>
-                        <a href="#cursos">Voltar aos cursos <i class="bi bi-arrow-up" aria-hidden="true"></i></a>
-                    </article>
-                    <article id="curso-automacao" class="col-12 col-lg-6 detalhe">
-                        <h3 class="h5">Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</h3>
-                        <dl>
-                            <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
-                            <dt>Condições de acesso</dt><dd>12.º ano ou nível 5, dos 18 aos 29 anos</dd>
-                            <dt>Modalidade</dt><dd>Cursos de Aprendizagem +</dd>
-                            <dt>Certificação</dt><dd>Nível 5</dd>
-                            <dt>Regime</dt><dd>Presencial, horário laboral, 12 meses com 500 horas de estágio</dd>
-                        </dl>
-                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden"> (abre num novo separador)</span></a>
-                        <a href="#cursos">Voltar aos cursos <i class="bi bi-arrow-up" aria-hidden="true"></i></a>
-                    </article>
-                    <article id="curso-eletricidade" class="col-12 col-lg-6 detalhe">
-                        <h3 class="h5">Técnico/a de Instalações Elétricas</h3>
-                        <dl>
-                            <dt>Destinatários</dt><dd>Desempregados e empregados</dd>
-                            <dt>Condições de acesso</dt><dd>12.º ano, a partir dos 18 anos</dd>
-                            <dt>Modalidade</dt><dd>Curso EFA de nível secundário, profissional</dd>
-                            <dt>Certificação</dt><dd>Nível 4</dd>
-                            <dt>Regime</dt><dd>Presencial, horário laboral</dd>
-                        </dl>
-                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=289791" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden"> (abre num novo separador)</span></a>
-                        <a href="#cursos">Voltar aos cursos <i class="bi bi-arrow-up" aria-hidden="true"></i></a>
-                    </article>
-                    <article id="curso-jardinagem" class="col-12 col-lg-6 detalhe">
-                        <h3 class="h5">Operador/a de Jardinagem</h3>
-                        <dl>
-                            <dt>Destinatários</dt><dd>Desempregados</dd>
-                            <dt>Condições de acesso</dt><dd>6.º ano, a partir dos 18 anos</dd>
-                            <dt>Modalidade</dt><dd>Curso EFA B3 de dupla certificação</dd>
-                            <dt>Certificação</dt><dd>9.º ano e nível 2</dd>
-                            <dt>Regime</dt><dd>Presencial, horário laboral</dd>
-                        </dl>
-                        <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288049" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden"> (abre num novo separador)</span></a>
-                        <a href="#cursos">Voltar aos cursos <i class="bi bi-arrow-up" aria-hidden="true"></i></a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== 5. NOTÍCIAS (publicações reais do Instagram) ========== -->
+        <!-- ========== 5. FEED (publicações reais do Instagram) ========== -->
         <section id="noticias" class="secao" aria-labelledby="titulo-noticias">
             <div class="container">
-                <h2 id="titulo-noticias">Notícias</h2>
+                <h2 id="titulo-noticias">Feed</h2>
+                <p>As publicações mais recentes do <a href="https://www.instagram.com/riomeaocontigo_iefp/" target="_blank" rel="noopener noreferrer">@riomeaocontigo_iefp<span class="visually-hidden"> (abre num novo separador)</span></a>.</p>
 
                 <!-- Publicações da conta do centro @riomeaocontigo_iefp (ver FONTES.md) -->
                 <div class="row row-cols-1 row-cols-lg-3 g-4">
@@ -280,7 +352,7 @@
                             <time datetime="2026-10-29">29 out 2026</time>
                             <h3 class="h5">Leonor Silva no WorldSkills, em Xangai</h3>
                             <p>A formanda de Cabeleireiro do centro representou Portugal no campeonato mundial das profissões. Foram meses de preparação até à prova na China.</p>
-                            <a href="https://www.instagram.com/riomeaocontigo_iefp/reel/DfGGSIWuxKd/" target="_blank" rel="noopener noreferrer">Ver no Instagram<span class="visually-hidden">: Leonor Silva no WorldSkills (abre num novo separador)</span></a>
+                            <a href="https://www.instagram.com/riomeaocontigo_iefp/reel/DfGGSIWuxKd/" target="_blank" rel="noopener noreferrer">Vê o post completo<span class="visually-hidden">: Leonor Silva no WorldSkills (abre num novo separador)</span></a>
                         </article>
                     </div>
                     <div class="col">
@@ -290,7 +362,7 @@
                             <time datetime="2026-10-29">29 out 2026</time>
                             <h3 class="h5">Formandos nos bastidores do The House of Fashion</h3>
                             <p>A 24 de outubro, formandos de Estética e Cabeleireiro trataram da maquilhagem e dos penteados dos modelos. Os de Multimédia acompanharam o desfile e o backstage.</p>
-                            <a href="https://www.instagram.com/riomeaocontigo_iefp/p/DfGD2xRjn6M/" target="_blank" rel="noopener noreferrer">Ver no Instagram<span class="visually-hidden">: The House of Fashion (abre num novo separador)</span></a>
+                            <a href="https://www.instagram.com/riomeaocontigo_iefp/p/DfGD2xRjn6M/" target="_blank" rel="noopener noreferrer">Vê o post completo<span class="visually-hidden">: The House of Fashion (abre num novo separador)</span></a>
                         </article>
                     </div>
                     <div class="col">
@@ -300,7 +372,7 @@
                             <time datetime="2026-10-17">17 out 2026</time>
                             <h3 class="h5">Formandos no 26.º Congresso «Formação para o Trabalho»</h3>
                             <p>A convite da organização, formandos do centro participaram no congresso internacional e foram elogiados pelo trabalho que fizeram.</p>
-                            <a href="https://www.instagram.com/riomeaocontigo_iefp/reel/DemyQguu6rY/" target="_blank" rel="noopener noreferrer">Ver no Instagram<span class="visually-hidden">: Congresso Formação para o Trabalho (abre num novo separador)</span></a>
+                            <a href="https://www.instagram.com/riomeaocontigo_iefp/reel/DemyQguu6rY/" target="_blank" rel="noopener noreferrer">Vê o post completo<span class="visually-hidden">: Congresso Formação para o Trabalho (abre num novo separador)</span></a>
                         </article>
                     </div>
                 </div>
@@ -369,14 +441,14 @@
             <div class="row g-4">
                 <div class="col-12 col-md-5">
                     <p class="rodape-marca">IEFP <strong>Rio Meão</strong></p>
-                    <p>Este site usa linguagem inclusiva sempre que possível, como faz o IEFP. É por isso que os cursos aparecem escritos como «Técnico/a».</p>
+                    <p>Este site usa linguagem inclusiva sempre que possível, como faz o IEFP. Por isso escrevemos Técnico/a e Operador/a nos nomes dos cursos.</p>
                 </div>
                 <nav class="col-12 col-md-4" aria-label="Ligações do rodapé">
                     <h2 class="h6">Ligações</h2>
                     <ul class="rodape-links">
                         <li><a href="#sobre">Sobre nós</a></li>
                         <li><a href="#cursos">Cursos</a></li>
-                        <li><a href="#noticias">Notícias</a></li>
+                        <li><a href="#noticias">Feed</a></li>
                         <li><a href="#contactos">Contactos</a></li>
                         <li><a href="https://www.iefp.pt" target="_blank" rel="noopener noreferrer">iefp.pt<span class="visually-hidden"> (abre num novo separador)</span></a></li>
                     </ul>
@@ -387,7 +459,7 @@
                 </div>
             </div>
             <!-- Indicação exigida pelo enunciado (ponto 4.7) -->
-            <p class="rodape-aviso">Projeto académico — website não oficial</p>
+            <p class="rodape-aviso">Projeto académico — website não oficial. Faz parte do portfólio de Gabriel Sousa, criado no curso de UX/UI Design do IEFP Rio Meão, em 2026.</p>
         </div>
     </footer>
 
