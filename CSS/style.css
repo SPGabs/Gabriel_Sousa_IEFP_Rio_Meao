@@ -171,6 +171,23 @@ a {
     text-underline-offset: 0.2em;
 }
 
+/* Ligações para fora do site: ícone «caixa com seta» (Bootstrap Icons)
+   a seguir ao texto. O seletor de atributo apanha todas as ligações com
+   target="_blank", sem mexer no HTML. O «/ ""» diz aos leitores de ecrã
+   para ignorarem o ícone (já têm o texto «abre num novo separador»). */
+a[target="_blank"]::after {
+    content: "\f1c5";
+    content: "\f1c5" / "";
+    display: inline-block;
+    margin-left: 0.3em;
+    font-family: "bootstrap-icons";
+    font-size: 0.75em;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: 0.05em;
+    text-decoration: none;
+}
+
 img {
     max-width: 100%;
     height: auto;

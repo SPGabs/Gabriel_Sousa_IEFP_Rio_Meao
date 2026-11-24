@@ -43,6 +43,7 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 | Títulos com quebras de linha escritas à mão | `max-width` em `ch` e `text-wrap: balance` |
 | Hierarquia de títulos com saltos (h3 antes de h2) | h1 → h2 → h3 sem saltos |
 | Botões e elementos flutuantes por cima do conteúdo | Só o cabeçalho é fixo |
+| Nada indica quando uma ligação leva para outro site | Todas as ligações externas têm o ícone «caixa com seta», aplicado só com CSS (`a[target="_blank"]::after`), e avisam os leitores de ecrã que abrem num novo separador |
 
 ## 5. Tecnologias
 
