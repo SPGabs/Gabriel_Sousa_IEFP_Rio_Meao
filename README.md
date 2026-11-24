@@ -100,7 +100,7 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 | 2 | Cartões (áreas, cursos, notícias) | `box-shadow`, `transform` (sobe 4 px) | 0,3 s | `cubic-bezier(0.2, 0.8, 0.2, 1)` |
 | 3 | Mudança de modo (página, cabeçalho, cartões, formulário, rodapé) | `background-color`, `color`, `border-color` | 0,4 s | `ease` |
 | 4 | Cartões dos cursos a virar | `transform` (`rotateY(180deg)`) e `visibility` com atraso de 0,3 s | 0,6 s | `cubic-bezier(0.4, 0.2, 0.2, 1)` |
-| 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform`, `background-color` e `box-shadow` da janela; `transform` do círculo que faz a lua; `opacity` das estrelas (com atraso de 0,15 s) | 0,4 a 0,5 s | `ease`, `cubic-bezier(0.4, 0, 0.2, 1)` e `cubic-bezier(0.34, 1.56, 0.64, 1)` (com ressalto) |
+| 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform`, `background-color` e `box-shadow` da janela; `transform` do círculo que faz a lua (atraso de 0,15 s); `opacity` das estrelas (só acendem no fim, com atraso de 0,5 s) | 0,9 s (variável `--tema-tempo`) | `cubic-bezier(0.45, 0, 0.55, 1)`: começa e acaba devagar, sem ressalto |
 
 ### Como o cartão vira sem JavaScript
 

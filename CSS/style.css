@@ -316,6 +316,9 @@ section[id] {
     --tema-largura: 9.75rem;
     --tema-bola: 2.25rem;
     --tema-folga: 0.25rem;
+    /* Animação lenta e suave, sem ressalto, para se verem os detalhes */
+    --tema-tempo: 0.9s;
+    --tema-curva: cubic-bezier(0.45, 0, 0.55, 1);
 
     position: relative;
     display: flex;
@@ -335,9 +338,9 @@ section[id] {
     user-select: none;
     box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.35);
     /* TRANSIÇÃO 5 · botão do modo escuro: cores e posição do texto */
-    transition: background-color 0.4s ease,
-                color 0.4s ease,
-                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--tema-tempo) var(--tema-curva),
+                color var(--tema-tempo) var(--tema-curva),
+                padding var(--tema-tempo) var(--tema-curva);
 }
 
 /* A bola é uma pequena janela com uma paisagem.
@@ -359,10 +362,10 @@ section[id] {
     border-radius: 50%;
     background-color: var(--ceu);
     box-shadow: 0 0 8px 2px var(--halo);
-    /* A bola desliza com um pequeno ressalto no fim */
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background-color 0.5s ease,
-                box-shadow 0.5s ease;
+    /* A bola desliza devagar, a acelerar e travar com suavidade */
+    transition: transform var(--tema-tempo) var(--tema-curva),
+                background-color var(--tema-tempo) var(--tema-curva),
+                box-shadow var(--tema-tempo) var(--tema-curva);
 }
 
 /* Sol: círculo branco com brilho */
@@ -375,7 +378,7 @@ section[id] {
     border-radius: 50%;
     background-color: #ffffff;
     box-shadow: 0 0 6px 2px rgb(255 255 255 / 0.8);
-    transition: box-shadow 0.5s ease;
+    transition: box-shadow var(--tema-tempo) var(--tema-curva);
 }
 
 /* Lua: um segundo círculo da cor do céu entra por cima do sol
@@ -387,14 +390,16 @@ section[id] {
     border-radius: 50%;
     background-color: var(--ceu);
     transform: translate(130%, -130%);
-    transition: transform 0.5s ease, background-color 0.5s ease;
+    /* A lua forma-se um pouco depois de a bola começar a andar */
+    transition: transform var(--tema-tempo) var(--tema-curva) 0.15s,
+                background-color var(--tema-tempo) var(--tema-curva);
 }
 
 /* Colinas: elipses largas que saem pelo fundo do círculo */
 .cena-colina {
     position: absolute;
     border-radius: 50%;
-    transition: background-color 0.5s ease;
+    transition: background-color var(--tema-tempo) var(--tema-curva);
 }
 
 .cena-colina-tras {
@@ -424,7 +429,8 @@ section[id] {
     background-color: #ffffff;
     box-shadow: 7px 6px 0 0 #ffffff, 2px 11px 0 0 rgb(255 255 255 / 0.7);
     opacity: 0;
-    transition: opacity 0.5s ease 0.15s;
+    /* Ao voltar ao dia, as estrelas apagam logo */
+    transition: opacity 0.3s ease;
 }
 
 .tema-botao:hover {
@@ -459,6 +465,8 @@ section[id] {
 
 .tema-input:checked + .tema-botao .cena-estrelas {
     opacity: 1;
+    /* Ao anoitecer, as estrelas só acendem no fim */
+    transition: opacity 0.6s ease 0.5s;
 }
 
 /* A checkbox está escondida: o foco do teclado aparece no botão */
