@@ -482,6 +482,25 @@ section[id] {
     border-color: var(--cor-borda);
 }
 
+/* Menu em painel lateral (offcanvas do Bootstrap): as variáveis do
+   Bootstrap passam a usar as nossas cores, por isso muda com o modo */
+.offcanvas {
+    --bs-offcanvas-width: min(20rem, 85vw);
+    --bs-offcanvas-bg: var(--cor-fundo);
+    --bs-offcanvas-color: var(--cor-texto);
+    --bs-offcanvas-border-color: var(--cor-borda);
+}
+
+.offcanvas-title {
+    margin: 0;
+    color: var(--cor-titulo);
+}
+
+/* O X do Bootstrap é escuro: no modo noturno fica claro */
+:root:has(#modo-escuro:checked) .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 
 /* =====================================================================
    5. BOTÕES
@@ -1260,17 +1279,11 @@ button:focus-visible,
    12. MEDIA QUERIES PRÓPRIAS
    ===================================================================== */
 
-/* Telemóvel e tablet (menu fechado no botão) */
+/* Telemóvel e tablet (menu no painel lateral) */
 @media (max-width: 991.98px) {
-    .navbar-collapse {
-        margin-top: 0.75rem;
-        padding: 0.75rem;
-        background-color: var(--cor-fundo-alt);
-        border-radius: var(--raio);
-    }
-
     .navbar .nav-link {
-        padding-inline: 0.75rem;
+        padding: 0.75rem;
+        font-size: 1.125rem;
     }
 }
 
@@ -1304,8 +1317,11 @@ button:focus-visible,
 
 /* Computador: interruptor depois dos links do menu */
 @media (min-width: 992px) {
-    .navbar-collapse {
+    /* No computador o painel fica na barra; align-items empurra
+       os links para a direita */
+    .offcanvas {
         order: 2;
+        align-items: flex-end;
     }
 
     .theme-switch {
@@ -1341,8 +1357,8 @@ button:focus-visible,
     }
 }
 
-/* Ecrãs muito estreitos (320 px): nome um pouco mais pequeno */
-@media (max-width: 359.98px) {
+/* Ecrãs estreitos (320 a 374 px, como os Android de 360 px): nome um pouco mais pequeno */
+@media (max-width: 374.98px) {
     .brand {
         margin-right: 0.5rem;
         font-size: 1rem;

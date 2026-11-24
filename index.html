@@ -54,19 +54,29 @@
                     </label>
                 </div>
 
-                <!-- Botão do menu no telemóvel (usa o JS do Bootstrap) -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
-                    aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+                <!-- Botão do menu no telemóvel: abre o painel lateral (offcanvas do Bootstrap) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu"
+                    aria-controls="menu" aria-label="Abrir menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="menu">
-                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre nós</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#noticias">Feed</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contactos">Contactos</a></li>
-                    </ul>
+                <!-- Menu: no computador fica na barra; no telemóvel é um painel lateral.
+                     O Bootstrap fecha-o ao clicar fora, no X ou com a tecla Esc.
+                     data-bs-dismiss nos <li> fecha o painel ao escolher uma opção
+                     (fica no <li> e não no <a> para o link continuar a funcionar). -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="menu" aria-labelledby="menu-titulo">
+                    <div class="offcanvas-header">
+                        <p class="offcanvas-title h5" id="menu-titulo">Menu</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar menu"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                            <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link" href="#sobre">Sobre nós</a></li>
+                            <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link" href="#cursos">Cursos</a></li>
+                            <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link" href="#noticias">Feed</a></li>
+                            <li class="nav-item" data-bs-dismiss="offcanvas"><a class="nav-link" href="#contactos">Contactos</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -500,8 +510,6 @@
 
     <!-- JS do Bootstrap: só para o menu do telemóvel abrir e fechar -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Único JavaScript próprio: fecha o menu do telemóvel (ver js/menu.js) -->
-    <script src="js/menu.js"></script>
 </body>
 
 </html>
