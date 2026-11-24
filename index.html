@@ -150,9 +150,11 @@
                         <!-- Composição em HTML e CSS (provisória, até haver foto do edifício) -->
                         <div class="cartao-morada" role="img" aria-label="Cartão com a localização do centro: Avenida de Santiago, 88, Rio Meão, Centro de Emprego e Formação Profissional de Entre Douro e Vouga">
                             <i class="bi bi-building" aria-hidden="true"></i>
-                            <p class="cartao-morada-titulo">Av. de Santiago, 88</p>
-                            <p>4520-462 Rio Meão</p>
-                            <p class="cartao-morada-rede">Centro de Emprego e Formação Profissional de Entre Douro e Vouga</p>
+                            <div>
+                                <p class="cartao-morada-titulo">Av. de Santiago, 88</p>
+                                <p>4520-462 Rio Meão</p>
+                                <p class="cartao-morada-rede">Centro de Emprego e Formação Profissional de Entre Douro e Vouga</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-7">
@@ -376,9 +378,10 @@
         <!-- ========== 7. CONTACTOS ========== -->
         <section id="contactos" class="secao secao-alt" aria-labelledby="titulo-contactos">
             <div class="container">
-                <div class="row gx-4 gy-5">
+                <!-- Título fora das colunas: assim os contactos e o formulário começam à mesma altura -->
+                <h2 id="titulo-contactos">Contactos</h2>
+                <div class="row gx-4 gy-4">
                     <div class="col-12 col-lg-5">
-                        <h2 id="titulo-contactos">Contactos</h2>
                         <!-- Fonte: página do serviço no iefp.pt e Instagram do centro (ver FONTES.md) -->
                         <!-- Cada contacto tem ícone, nome do campo e valor -->
                         <address class="lista-contactos">

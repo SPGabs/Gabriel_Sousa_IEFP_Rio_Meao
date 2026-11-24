@@ -206,11 +206,9 @@ section[id] {
 
 /* Etiqueta pequena por cima dos títulos (hero e inscrição) */
 /* Etiqueta pequena por cima dos títulos (hero e inscrição).
-   Texto em maiúsculas com um traço antes: não parece um botão. */
+   Só texto em maiúsculas, na cor de destaque: não parece um botão. */
 .etiqueta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
+    display: inline-block;
     margin-bottom: 0.5rem;
     color: var(--cor-destaque);
     font-size: 0.8rem;
@@ -219,12 +217,7 @@ section[id] {
     text-transform: uppercase;
 }
 
-.etiqueta::before {
-    content: "";
-    width: 1.75rem;
-    height: 2px;
-    background-color: currentColor;
-}
+
 
 
 /* =====================================================================
@@ -756,13 +749,15 @@ section[id] {
     margin: 0;
 }
 
+/* Links do verso um por baixo do outro: lado a lado ficavam colados
+   nos cartões estreitos */
 .verso-rodape {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
     margin-top: auto;
-    padding-top: 0.75rem;
+    padding-top: 1rem;
 }
 
 .verso-rodape .botao-virar {
@@ -851,6 +846,10 @@ section[id] {
 
 /* Cartão com a morada (secção Sobre nós) */
 .cartao-morada {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
     padding: clamp(1.5rem, 4vw, 2.5rem);
     border-radius: var(--raio-grande);
     background-color: var(--cor-cartao);
@@ -861,6 +860,7 @@ section[id] {
 
 .cartao-morada i {
     font-size: 2.5rem;
+    line-height: 1;
     color: var(--cor-destaque);
 }
 
@@ -869,7 +869,6 @@ section[id] {
 }
 
 .cartao-morada-titulo {
-    margin-top: 0.75rem !important;
     font-family: var(--fonte-titulos);
     font-size: 1.5rem;
     font-weight: 700;
@@ -896,7 +895,7 @@ section[id] {
 .lista-contactos {
     display: grid;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-bottom: 0;
 }
 
 .contacto {
