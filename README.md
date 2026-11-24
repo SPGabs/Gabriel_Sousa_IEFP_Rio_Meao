@@ -10,7 +10,7 @@
 
 Proposta de um novo website para o Serviço de Formação Profissional de Rio Meão, do IEFP. É uma página única com navegação entre secções: apresentação, áreas de formação, sobre nós, cursos, feed, inscrição e contactos.
 
-Os cartões dos cursos viram ao clicar na seta e mostram os detalhes no verso, sem JavaScript. As imagens do hero e do Sobre nós são, por agora, composições feitas em HTML e CSS.
+Os cartões dos cursos viram ao clicar na seta e mostram os detalhes no verso, sem JavaScript. No lugar das fotos há composições feitas em HTML e CSS: no hero, uma grelha «bento» com dados reais do centro; no Sobre nós, um mapa desenhado em CSS com o marcador a pulsar.
 
 Todos os dados são reais e verificados: contactos do site oficial, cursos publicados no iefponline e notícias do Instagram do próprio centro. A lista completa está em [FONTES.md](FONTES.md).
 
@@ -48,7 +48,7 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 ## 5. Tecnologias
 
 - **HTML5 semântico:** `header`, `nav`, `main`, `section`, `article`, `figure`, `address`, `time`, `dl`, `footer`
-- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
+- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `grid-template-areas`, `@keyframes`, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
 - **Bootstrap 5.3.3** (CDN jsDelivr), personalizado pelo CSS próprio:
   - Grelha: `container`, `row`, `col-*`, `row-cols-*`, `g-*`/`gx-*`/`gy-*`
   - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `collapse`. O único JavaScript do site é o do Bootstrap, para o menu abrir no telemóvel
@@ -110,6 +110,13 @@ Cada cartão tem uma checkbox escondida. As setas → e ← são `<label>` dessa
 Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e a seta dos cartões de áreas desliza 4 px (`ease-out`).
 
 Todas usam a declaração abreviada `transition` com várias propriedades. Quem tem a opção «reduzir movimento» ligada no sistema não vê as animações (`prefers-reduced-motion`).
+
+### Composições no lugar das fotos
+
+Não consegui fotos com qualidade do centro, por isso fiz duas composições só com HTML e CSS:
+
+- **Hero, grelha «bento»:** blocos de tamanhos diferentes desenhados com `grid-template-areas`. Cada bloco tem um dado real: os 4 cursos a começar, a idade dos cursos de aprendizagem, os cursos EFA e o RVCC, e as fotos do feed do Instagram em círculos sobrepostos. É uma lista (`<ul>`), por isso o leitor de ecrã lê o texto normalmente.
+- **Sobre nós, mapa em CSS:** as ruas são dois `repeating-linear-gradient` (horizontal e vertical), a avenida é um `<span>` rodado e o marcador tem uma onda feita com `@keyframes`, que repete sem parar. Com «reduzir movimento» ligado, a onda para. Por baixo do mapa ficam a morada e o link «Como chegar» para o Google Maps.
 
 ### Teste de acessibilidade
 

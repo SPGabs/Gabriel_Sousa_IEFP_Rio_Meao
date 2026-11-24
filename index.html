@@ -90,26 +90,35 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
-                        <!-- Composição visual feita em HTML e CSS (provisória, até haver foto real).
-                             role="img" + aria-label: o leitor de ecrã lê só a descrição. -->
-                        <div class="mosaico" role="img" aria-label="Mosaico com as três áreas do centro: jovens dos 14 aos 29 anos, adultos em cursos EFA e Centro Qualifica com RVCC">
-                            <div class="mosaico-peca peca-jovens">
-                                <i class="bi bi-backpack" aria-hidden="true"></i>
-                                <span>14–29 anos</span>
-                            </div>
-                            <div class="mosaico-peca peca-adultos">
-                                <i class="bi bi-briefcase" aria-hidden="true"></i>
-                                <span>Cursos EFA</span>
-                            </div>
-                            <div class="mosaico-peca peca-qualifica">
-                                <i class="bi bi-patch-check" aria-hidden="true"></i>
-                                <span>RVCC</span>
-                            </div>
-                            <div class="mosaico-peca peca-local">
-                                <i class="bi bi-geo-alt" aria-hidden="true"></i>
-                                <span>Rio Meão</span>
-                            </div>
-                        </div>
+                        <!-- Grelha «bento» em CSS Grid, com dados reais do centro.
+                             É uma lista: o leitor de ecrã lê cada bloco como texto normal. -->
+                        <ul class="bento" aria-label="O centro em números">
+                            <li class="bento-peca bento-cursos">
+                                <i class="bi bi-mortarboard bento-fundo" aria-hidden="true"></i>
+                                <p><span class="bento-numero">4</span> cursos a começar este outono</p>
+                                <ul class="bento-etiquetas">
+                                    <li>Software</li>
+                                    <li>Automação</li>
+                                    <li>Eletricidade</li>
+                                    <li>Jardinagem</li>
+                                </ul>
+                            </li>
+                            <li class="bento-peca bento-jovens">
+                                <p><span class="bento-numero">14–29</span> anos nos cursos de aprendizagem</p>
+                            </li>
+                            <li class="bento-peca bento-adultos">
+                                <p><span class="bento-numero">EFA</span> e RVCC para adultos</p>
+                            </li>
+                            <li class="bento-peca bento-feed">
+                                <span class="bento-fotos" aria-hidden="true">
+                                    <img src="images/noticia-worldskills.jpg" alt="" width="44" height="44">
+                                    <img src="images/noticia-house-of-fashion.jpg" alt="" width="44" height="44">
+                                    <img src="images/noticia-congresso.jpg" alt="" width="44" height="44">
+                                </span>
+                                <p><i class="bi bi-instagram" aria-hidden="true"></i> #riomeaocontigo</p>
+                                <a href="#noticias">Ver o feed</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -151,12 +160,18 @@
             <div class="container">
                 <div class="row gx-4 gy-5 align-items-center">
                     <div class="col-12 col-lg-5">
-                        <!-- Composição em HTML e CSS (provisória, até haver foto do edifício) -->
-                        <div class="cartao-morada" role="img" aria-label="Cartão com a localização do centro: Avenida de Santiago, 88, Rio Meão, Centro de Emprego e Formação Profissional de Entre Douro e Vouga">
-                            <i class="bi bi-building" aria-hidden="true"></i>
-                            <div>
+                        <!-- Mapa desenhado em CSS (decorativo, por isso aria-hidden).
+                             A morada fica em texto por baixo, com o link para o Google Maps. -->
+                        <div class="cartao-mapa">
+                            <div class="mapa-desenho" aria-hidden="true">
+                                <span class="mapa-parque"></span>
+                                <span class="mapa-avenida"><span>Av. de Santiago</span></span>
+                                <span class="mapa-pino"><i class="bi bi-geo-alt-fill"></i></span>
+                            </div>
+                            <div class="cartao-mapa-info">
                                 <p class="cartao-morada-titulo">Av. de Santiago, 88</p>
                                 <p>4520-462 Rio Meão</p>
+                                <a class="link-seta" href="https://www.google.com/maps/search/?api=1&amp;query=40.959358,-8.593725" target="_blank" rel="noopener noreferrer">Como chegar<span class="visually-hidden"> (abre o Google Maps num novo separador)</span></a>
                                 <p class="cartao-morada-rede">Centro de Emprego e Formação Profissional de Entre Douro e Vouga</p>
                             </div>
                         </div>
