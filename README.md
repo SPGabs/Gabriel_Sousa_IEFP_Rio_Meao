@@ -49,9 +49,10 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 
 - **HTML5 semântico:** `header`, `nav`, `main`, `section`, `article`, `figure`, `address`, `time`, `dl`, `footer`
 - **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `grid-template-areas`, `@keyframes`, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
+- **JavaScript próprio** (`js/menu.js`, cerca de 20 linhas): só fecha o menu do telemóvel quando se escolhe uma opção, se clica fora dele (logótipo, botão do modo escuro, página) ou se carrega em Esc. O `collapse` do Bootstrap só fecha no botão ☰. Tudo o resto (modo escuro, cartões que viram, animações) é só CSS
 - **Bootstrap 5.3.3** (CDN jsDelivr), personalizado pelo CSS próprio:
   - Grelha: `container`, `row`, `col-*`, `row-cols-*`, `g-*`/`gx-*`/`gy-*`
-  - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `collapse`. O único JavaScript do site é o do Bootstrap, para o menu abrir no telemóvel
+  - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `collapse`, que usam o JavaScript do Bootstrap para o menu abrir no telemóvel
   - Formulário: `form-control` e `form-label`
   - Botões: a classe `btn`, com cores, formas e transições próprias (`btn-principal`, `btn-contorno`)
   - Utilitários: `d-flex`, `gap-*`, `h-100`, `visually-hidden`, `sticky-top`
@@ -168,6 +169,8 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Morada repetida.** A morada aparecia em 4 sítios (hero, cartão do Sobre nós, mapa desenhado e contactos). Experimentei um mapa desenhado em CSS no Sobre nós, mas chamava mais a atenção do que devia e não era real. Deixei a morada só nos contactos, com o mapa real do Google Maps, e o Sobre nós passou a mostrar os objetivos em cartões.
 - **O site mudava de modo antes do botão.** O botão demorava 0,9 s e o site 0,4 s, e muitos elementos nem tinham transição. O tempo e a curva passaram para variáveis partilhadas, e a transição aplica-se a todos os elementos com `:where(*)`. Os gradientes não fazem transição, por isso o fundo do hero passou a ser uma cor com um véu verde transparente por cima.
 - **Espaço duplo entre Cursos e Feed.** As duas secções têm fundo branco, e os dois espaços somavam-se. Uma secção branca a seguir a outra branca deixa de ter espaço em cima.
+- **O menu do telemóvel não fechava.** Só fechava no botão ☰, mesmo depois de escolher uma opção. Pensei em trocar para o `offcanvas` do Bootstrap, mas mudava o aspeto do menu. Preferi escrever um JavaScript pequeno (`js/menu.js`) que fecha o menu com um clique numa opção, fora dele ou na tecla Esc.
+- **Faltava voltar ao topo.** No fim da página há agora o botão «Voltar ao topo», no rodapé.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 
 Testado em 320, 375, 768, 995, 1280 e 1920 px, nos dois modos.

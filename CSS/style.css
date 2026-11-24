@@ -1149,12 +1149,48 @@ section[id] {
     margin-bottom: 0.35rem;
 }
 
-.rodape-aviso {
-    margin: 2rem 0 0;
+.rodape-fim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
     padding-top: 1.25rem;
     border-top: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.rodape-aviso {
+    margin: 0;
     font-size: 0.875rem;
     text-align: center;
+}
+
+/* Botão «Voltar ao topo»: pílula com contorno, como o .btn-contorno */
+.site-footer .voltar-topo {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.site-footer .voltar-topo:hover {
+    background-color: var(--cor-rodape-texto);
+    color: var(--cor-rodape-fundo);
+}
+
+/* A seta sobe um pouco ao passar o rato */
+.voltar-topo i {
+    transition: transform 0.2s ease-out;
+}
+
+.voltar-topo:hover i {
+    transform: translateY(-2px);
 }
 
 
@@ -1344,6 +1380,11 @@ button:focus-visible,
 
 /* Computador: separa melhor as colunas do rodapé */
 @media (min-width: 768px) {
+    .rodape-fim {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .rodape-aviso {
         text-align: left;
     }
