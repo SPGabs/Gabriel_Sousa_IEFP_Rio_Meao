@@ -134,6 +134,8 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Cartões apertados no tablet.** A 768 px os 3 cartões ficavam com 216 px de largura, o mesmo erro do FAD. Agora só ficam em 3 colunas a partir de 992 px.
 - **Detalhes dos cursos numa secção à parte.** Obrigava a saltar para baixo e voltar. Passaram para o verso de cada cartão, que vira com uma checkbox e CSS.
 - **Fotos do Instagram com pouca resolução e formatos diferentes.** Uso `aspect-ratio` e `object-fit: cover` para ficarem todas com o mesmo formato.
+- **A página subia ao ligar o modo escuro.** A cada clique subia 72 px. A causa era a regra `[id] { scroll-margin-top }`, feita para os saltos do menu, que também se aplicava à checkbox do botão: quando a checkbox recebia o foco, o browser fazia scroll para a afastar do topo. Limitei a regra a `section[id]`. Nos cartões acontecia o mesmo, porque a checkbox estava no canto de cima. Passei-a para o fundo, junto do «Saber mais».
+- **Setas repetidas.** Nos cartões das áreas a seta → ficava colada ao ícone de ligação externa. Tirei a seta, e o ícone externo passou a ser a seta e a animar ao passar o rato.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 
 Testado em 375, 768, 995, 1280 e 1920 px, nos dois modos.
