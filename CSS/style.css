@@ -295,6 +295,14 @@ section[id] {
     pointer-events: none;
 }
 
+/* No cartão, a checkbox fica no fundo, junto de «Saber mais» e «Voltar»:
+   assim o browser não faz scroll para o topo do cartão ao clicar */
+.virar-input {
+    top: auto;
+    bottom: 1.5rem;
+    left: 1.5rem;
+}
+
 /* Botão do modo escuro
    Desligado (modo claro): pílula escura, bola à esquerda com a lua.
    Ligado (modo escuro): pílula clara, bola desliza para a direita e
