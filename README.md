@@ -89,7 +89,8 @@ Definidas em `:root` e redefinidas no modo noturno:
 | `--cor-borda` | Contornos e separadores |
 | `--cor-jovens`, `--cor-adultos`, `--cor-qualifica` | Cor de cada cartão de área |
 | `--cor-cta-fundo`, `--cor-rodape-fundo` | Chamada para inscrição e rodapé |
-| `--raio`, `--sombra`, `--espaco-secao`, `--tempo-modo` | Arredondamentos, sombras, espaçamento e duração da mudança de modo |
+| `--raio`, `--sombra`, `--espaco-secao` | Arredondamentos, sombras e espaçamento |
+| `--tempo-modo`, `--curva-modo`, `--transicao-modo` | Tempo, curva e lista de propriedades da mudança de modo, partilhados com o botão dia/noite |
 
 O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `--bs-body-color`.
 
@@ -99,7 +100,7 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 |---|---|---|---|---|
 | 1 | Botões (`.btn`) | `background-color`, `color`, `border-color`, `transform` (sobe 2 px) | 0,2 s | `ease-in-out` e `ease-out` |
 | 2 | Cartões (áreas, cursos, notícias) | `box-shadow`, `transform` (sobe 4 px) | 0,3 s | `cubic-bezier(0.2, 0.8, 0.2, 1)` |
-| 3 | Mudança de modo (página, cabeçalho, cartões, formulário, rodapé) | `background-color`, `color`, `border-color` | 0,4 s | `ease` |
+| 3 | Mudança de modo (todos os elementos, com `:where(*)`) | `background-color`, `color`, `border-color`, `filter` | 0,9 s, o mesmo do botão | `cubic-bezier(0.45, 0, 0.55, 1)` |
 | 4 | Cartões dos cursos a virar | `transform` (`rotateY(180deg)`) e `visibility` com atraso de 0,3 s | 0,6 s | `cubic-bezier(0.4, 0.2, 0.2, 1)` |
 | 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform`, `background-color` e `box-shadow` da janela; `transform` do círculo que faz a lua (atraso de 0,15 s); `opacity` das estrelas (só acendem no fim, com atraso de 0,5 s) | 0,9 s (variável `--tema-tempo`) | `cubic-bezier(0.45, 0, 0.55, 1)`: começa e acaba devagar, sem ressalto |
 
@@ -165,6 +166,8 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **A página subia ao ligar o modo escuro.** A cada clique subia 72 px. A causa era a regra `[id] { scroll-margin-top }`, feita para os saltos do menu, que também se aplicava à checkbox do botão: quando a checkbox recebia o foco, o browser fazia scroll para a afastar do topo. Limitei a regra a `section[id]`. Nos cartões acontecia o mesmo, porque a checkbox estava no canto de cima. Passei-a para o fundo, junto do «Saber mais».
 - **Setas repetidas.** Nos cartões das áreas a seta → ficava colada ao ícone de ligação externa. Tirei a seta, e o ícone externo passou a ser a seta e a animar ao passar o rato.
 - **Morada repetida.** A morada aparecia em 4 sítios (hero, cartão do Sobre nós, mapa desenhado e contactos). Experimentei um mapa desenhado em CSS no Sobre nós, mas chamava mais a atenção do que devia e não era real. Deixei a morada só nos contactos, com o mapa real do Google Maps, e o Sobre nós passou a mostrar os objetivos em cartões.
+- **O site mudava de modo antes do botão.** O botão demorava 0,9 s e o site 0,4 s, e muitos elementos nem tinham transição. O tempo e a curva passaram para variáveis partilhadas, e a transição aplica-se a todos os elementos com `:where(*)`. Os gradientes não fazem transição, por isso o fundo do hero passou a ser uma cor com um véu verde transparente por cima.
+- **Espaço duplo entre Cursos e Feed.** As duas secções têm fundo branco, e os dois espaços somavam-se. Uma secção branca a seguir a outra branca deixa de ter espaço em cima.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 
 Testado em 320, 375, 768, 995, 1280 e 1920 px, nos dois modos.

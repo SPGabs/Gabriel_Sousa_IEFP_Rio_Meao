@@ -69,8 +69,14 @@
     --fonte-titulos: "Roboto", Arial, sans-serif;
     --fonte-texto: "Open Sans", Arial, sans-serif;
 
-    /* Duração da mudança de modo (usada em vários elementos) */
-    --tempo-modo: 0.4s;
+    /* Mudança de modo: o mesmo tempo e a mesma curva do botão dia/noite,
+       para o site e o botão mudarem juntos */
+    --tempo-modo: 0.9s;
+    --curva-modo: cubic-bezier(0.45, 0, 0.55, 1);
+    --transicao-modo: background-color var(--tempo-modo) var(--curva-modo),
+                      color var(--tempo-modo) var(--curva-modo),
+                      border-color var(--tempo-modo) var(--curva-modo),
+                      filter var(--tempo-modo) var(--curva-modo);
 
     /* O Bootstrap também passa a usar as nossas cores */
     --bs-body-bg: var(--cor-fundo);
@@ -139,19 +145,11 @@ body {
 }
 
 /* TRANSIÇÃO 3 · mudança de modo
-   Declaração abreviada com várias propriedades. */
-body,
-.site-header,
-.navbar-collapse,
-.secao,
-.cartao-area,
-.cartao-curso,
-.cartao-noticia,
-.form-control,
-.site-footer {
-    transition: background-color var(--tempo-modo) ease,
-                color var(--tempo-modo) ease,
-                border-color var(--tempo-modo) ease;
+   Aplica-se a todos os elementos, para nada mudar de repente.
+   :where() tem especificidade 0: qualquer regra com transição própria
+   (botões, cartões...) ganha a esta e junta-lhe var(--transicao-modo). */
+:where(*, *::before, *::after) {
+    transition: var(--transicao-modo);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -247,7 +245,7 @@ section[id] {
     box-sizing: content-box;
     padding: 0.2rem;
     border-radius: 0.5rem;
-    transition: background-color var(--tempo-modo) ease;
+    transition: var(--transicao-modo);
 }
 
 :root:has(#modo-escuro:checked) .brand-simbolo {
@@ -317,8 +315,8 @@ section[id] {
     --tema-bola: 2.25rem;
     --tema-folga: 0.25rem;
     /* Animação lenta e suave, sem ressalto, para se verem os detalhes */
-    --tema-tempo: 0.9s;
-    --tema-curva: cubic-bezier(0.45, 0, 0.55, 1);
+    --tema-tempo: var(--tempo-modo);
+    --tema-curva: var(--curva-modo);
 
     position: relative;
     display: flex;
@@ -547,10 +545,20 @@ section[id] {
     background-color: var(--cor-fundo-alt);
 }
 
+/* Duas secções seguidas com fundo branco (Cursos e Feed) não têm
+   mudança de cor a separá-las: sem isto o espaço entre elas é o dobro */
+.secao:not(.secao-alt, .secao-cta) + .secao:not(.secao-alt, .secao-cta) {
+    padding-top: 0;
+}
+
 /* Hero */
 .hero {
     padding-block: var(--espaco-secao);
-    background: linear-gradient(180deg, var(--cor-fundo-alt), var(--cor-fundo));
+    /* Os gradientes não fazem transição. Por isso a cor muda no
+       background-color e o gradiente é só um véu verde transparente,
+       igual nos dois modos */
+    background-color: var(--cor-fundo);
+    background-image: linear-gradient(180deg, rgb(0 102 43 / 0.06), transparent);
 }
 
 .hero h1 {
@@ -623,8 +631,7 @@ section[id] {
 .cartao-noticia {
     transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
                 transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                background-color var(--tempo-modo) ease,
-                border-color var(--tempo-modo) ease;
+                var(--transicao-modo);
 }
 
 .cartao-area:hover,
@@ -666,7 +673,7 @@ section[id] {
 /* Nas ligações das áreas o ícone de ligação externa já é a seta:
    ao passar o rato sobe e avança um pouco */
 .link-seta::after {
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out, var(--transicao-modo);
 }
 
 .link-seta:hover::after {
@@ -710,7 +717,7 @@ section[id] {
     height: 100%;
     transform-style: preserve-3d;
     /* TRANSIÇÃO 4 · rotação do cartão */
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), var(--transicao-modo);
 }
 
 .cartao-face {
@@ -723,7 +730,7 @@ section[id] {
     /* O verso fica escondido também para o teclado e leitores de ecrã;
        visibility muda a meio da rotação (atraso de 0,3 s) */
     visibility: hidden;
-    transition: visibility 0s linear 0.3s;
+    transition: visibility 0s linear 0.3s, var(--transicao-modo);
 }
 
 .virar-input:checked + .cartao-curso-interior {
@@ -736,7 +743,7 @@ section[id] {
 
 .virar-input:checked + .cartao-curso-interior .cartao-frente {
     visibility: hidden;
-    transition: visibility 0s linear 0.3s;
+    transition: visibility 0s linear 0.3s, var(--transicao-modo);
 }
 
 /* «Saber mais →» que vira o cartão (é um <label> da checkbox).
@@ -757,7 +764,7 @@ section[id] {
 }
 
 .botao-virar i {
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out, var(--transicao-modo);
 }
 
 .botao-virar:hover i {
@@ -1010,6 +1017,7 @@ section[id] {
 .lista-contactos {
     display: grid;
     gap: 1rem;
+    height: 100%; /* estica até à altura do formulário */
     margin-bottom: 0;
 }
 
@@ -1076,7 +1084,8 @@ section[id] {
 }
 
 .form-contacto {
-    padding: clamp(1.25rem, 3vw, 2rem);
+    height: 100%; /* estica até à altura dos contactos */
+    padding: clamp(1.25rem, 2.5vw, 1.5rem);
     background-color: var(--cor-cartao);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio);
@@ -1090,6 +1099,8 @@ section[id] {
     background-color: var(--cor-fundo);
     border-color: var(--cor-borda);
     color: var(--cor-texto);
+    /* O Bootstrap tem uma transição própria que apagava a do modo */
+    transition: var(--transicao-modo), box-shadow 0.15s ease-in-out;
 }
 
 .form-control:focus {
