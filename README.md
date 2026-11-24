@@ -125,16 +125,16 @@ O mapa é um `<iframe>` do Google Maps, com as coordenadas oficiais do centro. �
 
 Testei o site publicado no [AccessMonitor](https://accessmonitor.acessibilidade.gov.pt/), o validador oficial português das WCAG 2.1, o mesmo que o IEFP usa para avaliar o iefp.pt ([declaração de acessibilidade do IEFP](https://www.iefp.pt/acessibilidade)).
 
-**Resultado a 24/11/2026: 10 em 10.** 35 práticas encontradas: 29 aceitáveis, 0 não aceitáveis e 6 para ver manualmente. Estas 6 foram verificadas à mão:
+**Resultado a 24/11/2026: 10 em 10.** 36 práticas encontradas: 30 aceitáveis, 0 não aceitáveis e 6 para ver manualmente. A prática nova é a do mapa: o `<iframe>` não tem elementos interativos escondidos do teclado. Estas 6 foram verificadas à mão:
 
 | Prática para ver manualmente | Verificação |
 |---|---|
 | O primeiro link salta para o conteúdo principal | Sim, é o link «Saltar para o conteúdo» |
-| 12 links para contornar blocos de conteúdo | São os links do menu e do rodapé para as secções |
+| 13 links para contornar blocos de conteúdo | São os links do menu e do rodapé para as secções, e o «Ver o feed» do hero |
 | 1 imagem com `alt=""` | É o símbolo do IEFP no cabeçalho. O nome «IEFP Rio Meão» já está escrito ao lado, por isso a imagem é decorativa |
 | Idioma marcado como `pt-PT` | Correto |
 | 21 cabeçalhos na página | A ordem h1 → h2 → h3 não tem saltos |
-| 33 combinações abaixo do contraste AAA (7:1) | O nível pedido é o AA (4,5:1) e todas o cumprem. O AAA é opcional |
+| 36 combinações abaixo do contraste AAA (7:1) | O nível pedido é o AA (4,5:1) e todas o cumprem. O AAA é opcional |
 
 ## 9. Fontes
 
