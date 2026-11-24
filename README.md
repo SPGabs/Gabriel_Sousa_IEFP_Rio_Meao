@@ -114,7 +114,7 @@ Todas usam a declaração abreviada `transition` com várias propriedades. Quem 
 
 ### Grelha «bento» no hero
 
-Não consegui fotos com qualidade do centro, por isso o hero tem uma composição só com HTML e CSS: blocos de tamanhos diferentes desenhados com `grid-template-areas`. Cada bloco tem um dado real: os 4 cursos com início no outono, a idade dos cursos de aprendizagem, os cursos EFA e o RVCC, e as fotos do feed do Instagram em círculos sobrepostos. É uma lista (`<ul>`), por isso o leitor de ecrã lê o texto normalmente.
+Não consegui fotos com qualidade do centro, por isso o hero tem uma composição só com HTML e CSS: blocos de tamanhos diferentes desenhados com `grid-template-areas`. Cada bloco tem um dado real: os 4 cursos com início no outono, a idade dos cursos de aprendizagem, os cursos EFA e o RVCC, e as fotos do feed do Instagram em círculos sobrepostos. É uma lista (`<ul>`), por isso o leitor de ecrã lê o texto normalmente. No telemóvel a grelha muda só com outro `grid-template-areas`: o bloco dos cursos passa para cima, a toda a largura, para as etiquetas caberem e o ícone do capelo (Bootstrap Icons, transparente no canto) ficar à vista.
 
 Os blocos entram com uma animação `@keyframes` (sobem 1rem e aparecem), um a seguir ao outro com `animation-delay`. Com «reduzir movimento» ligado, aparecem logo.
 

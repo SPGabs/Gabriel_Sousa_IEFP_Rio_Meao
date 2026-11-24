@@ -998,8 +998,14 @@ section[id] {
 
 .bento-cursos {
     grid-area: cursos;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #0060a9;
+}
+
+/* Neste bloco o conteúdo fica em cima, logo a seguir ao rótulo,
+   para deixar à vista o capelo do canto de baixo */
+.bento-cursos .bento-rotulo {
+    margin-bottom: 0.5rem;
 }
 
 .bento-cursos .bento-numero {
@@ -1448,6 +1454,17 @@ button:focus-visible,
     /* Blocos do bento com menos margem interior no telemóvel */
     .bento-peca {
         padding: 1rem;
+    }
+
+    /* No telemóvel o bloco dos cursos ocupa a largura toda, em cima:
+       as etiquetas cabem e o capelo do canto fica à vista */
+    .bento {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "cursos  cursos"
+            "jovens  adultos"
+            "feed    feed";
     }
 }
 
