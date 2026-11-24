@@ -52,7 +52,8 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 - **Bootstrap 5.3.3** (CDN jsDelivr), personalizado pelo CSS próprio:
   - Grelha: `container`, `row`, `col-*`, `row-cols-*`, `g-*`/`gx-*`/`gy-*`
   - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `collapse`. O único JavaScript do site é o do Bootstrap, para o menu abrir no telemóvel
-  - Formulário: `form-control`, `form-label`, `form-check form-switch`
+  - Formulário: `form-control` e `form-label`
+  - Botões: a classe `btn`, com cores, formas e transições próprias (`btn-principal`, `btn-contorno`)
   - Utilitários: `d-flex`, `gap-*`, `h-100`, `visually-hidden`, `sticky-top`
 - **Bootstrap Icons 1.11.3**
 - **Google Fonts:** Roboto (títulos) e Open Sans (texto), as mesmas do iefp.pt
