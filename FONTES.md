@@ -12,7 +12,7 @@ Fonte: [iefp.pt, página do serviço](https://www.iefp.pt/detalheservico?id=3236
 |---|---|---|
 | Morada | Av. de Santiago, 88, 4520-462 Rio Meão | ✅ |
 | Telefone | 25 602 97 00 | ✅ |
-| Horário de atendimento | 9h00 às 18h00 | ✅ |
+| Horário de atendimento | 9h00 às 18h00 (os dias, «dias úteis exceto feriados», vêm do diretório não oficial [ocentrodeemprego.com](https://www.ocentrodeemprego.com/formacao-profissional/norte/rio-meao/), consultado a 24/11/2026) | ✅ hora, ⚠️ dias |
 | Coordenadas GPS | N 40° 57.5615, W 8° 35.6235 | ✅ |
 | Estrutura | Delegação Regional do Norte, Centro de Emprego e Formação Profissional de Entre Douro e Vouga | ✅ |
 | Contacto por mensagem | Através do iefponline, opção «Contactar o IEFP» | ✅ |
