@@ -266,6 +266,7 @@ figure {
    No telemóvel fica entre o logótipo e o botão do menu;
    no computador passa para o fim, depois dos links (order). */
 .theme-switch {
+    position: relative;
     display: flex;
     flex-shrink: 0;
     align-items: center;
@@ -274,6 +275,22 @@ figure {
     margin-left: auto;
     margin-right: 0.75rem;
     font-size: 0.9rem;
+}
+
+/* Checkboxes escondidas (modo escuro e cartões que viram)
+   Ficam invisíveis mas no mesmo sítio do botão que as controla.
+   Com a classe visually-hidden do Bootstrap ficavam fora do sítio e,
+   ao receberem o foco no clique, o browser fazia scroll até elas. */
+.tema-input,
+.virar-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Botão do modo escuro
@@ -589,13 +606,14 @@ figure {
     text-decoration: none;
 }
 
-.link-seta i {
-    display: inline-block;
+/* Nas ligações das áreas o ícone de ligação externa já é a seta:
+   ao passar o rato sobe e avança um pouco */
+.link-seta::after {
     transition: transform 0.2s ease-out;
 }
 
-.link-seta:hover i {
-    transform: translateX(4px);
+.link-seta:hover::after {
+    transform: translate(2px, -2px);
 }
 
 /* Cartões de cursos */
@@ -626,6 +644,7 @@ figure {
    3. backface-visibility esconde o lado que está de costas.
    4. Quando a checkbox está marcada, o interior roda 180°. */
 .cartao-curso {
+    position: relative;
     perspective: 1200px;
 }
 
