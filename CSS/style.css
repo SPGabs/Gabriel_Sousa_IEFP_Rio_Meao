@@ -1226,12 +1226,23 @@ button:focus-visible,
 /* Ecrãs muito estreitos (320 px): nome um pouco mais pequeno */
 @media (max-width: 359.98px) {
     .brand {
-        font-size: 1.05rem;
+        margin-right: 0.5rem;
+        font-size: 1rem;
         gap: 0.4rem;
+    }
+
+    .brand-simbolo {
+        width: 34px;
+        height: auto;
     }
 
     .theme-switch {
         margin-right: 0.5rem;
+    }
+
+    .tema-botao {
+        --tema-bola: 2rem;
+        --tema-largura: 3.75rem;
     }
 }
 
