@@ -205,14 +205,25 @@ section[id] {
 }
 
 /* Etiqueta pequena por cima dos títulos (hero e inscrição) */
+/* Etiqueta pequena por cima dos títulos (hero e inscrição).
+   Texto em maiúsculas com um traço antes: não parece um botão. */
 .etiqueta {
-    display: inline-block;
-    padding: 0.25rem 0.9rem;
-    border: 1px solid currentColor;
-    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
     color: var(--cor-destaque);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.etiqueta::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    background-color: currentColor;
 }
 
 
@@ -881,13 +892,51 @@ section[id] {
     font-style: normal;
 }
 
-.lista-contactos p {
-    display: flex;
-    gap: 0.75rem;
+/* Contactos: CSS Grid com um quadrado por contacto */
+.lista-contactos {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
-.lista-contactos i {
+.contacto {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--cor-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.contacto p {
+    margin: 0;
+}
+
+/* Ícone num círculo com a cor de destaque bem clara por trás */
+.contacto > i {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-alt);
     color: var(--cor-destaque);
+    font-size: 1.1rem;
+}
+
+.contacto-rotulo {
+    color: var(--cor-texto-suave);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.contacto-mapa {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-weight: 600;
 }
 
 .form-contacto {
