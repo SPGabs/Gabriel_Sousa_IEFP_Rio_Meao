@@ -22,6 +22,31 @@
    1. VARIÁVEIS · MODO DIURNO
    Cores tiradas do CSS do site oficial iefp.pt (ver FONTES.md).
    ===================================================================== */
+/* As variáveis de cor ficam registadas como cores (<color>).
+   Assim o browser sabe animá-las: na mudança de modo é a própria
+   variável que passa devagar de um valor ao outro. */
+@property --cor-fundo { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --cor-fundo-alt { syntax: "<color>"; inherits: true; initial-value: #f2f7f3; }
+@property --cor-cartao { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --cor-texto { syntax: "<color>"; inherits: true; initial-value: #383838; }
+@property --cor-texto-suave { syntax: "<color>"; inherits: true; initial-value: #636f77; }
+@property --cor-titulo { syntax: "<color>"; inherits: true; initial-value: #0b3d20; }
+@property --cor-destaque { syntax: "<color>"; inherits: true; initial-value: #00662b; }
+@property --cor-link { syntax: "<color>"; inherits: true; initial-value: #0060a9; }
+@property --cor-botao { syntax: "<color>"; inherits: true; initial-value: #00662b; }
+@property --cor-botao-hover { syntax: "<color>"; inherits: true; initial-value: #004d20; }
+@property --cor-botao-texto { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --cor-borda { syntax: "<color>"; inherits: true; initial-value: #d9e2dc; }
+@property --cor-jovens { syntax: "<color>"; inherits: true; initial-value: #0060a9; }
+@property --cor-adultos { syntax: "<color>"; inherits: true; initial-value: #26872e; }
+@property --cor-qualifica { syntax: "<color>"; inherits: true; initial-value: #027eb0; }
+@property --cor-cta-fundo { syntax: "<color>"; inherits: true; initial-value: #00662b; }
+@property --cor-cta-texto { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --cor-rodape-fundo { syntax: "<color>"; inherits: true; initial-value: #0b3d20; }
+@property --cor-rodape-texto { syntax: "<color>"; inherits: true; initial-value: #e6efe9; }
+@property --cor-foco { syntax: "<color>"; inherits: true; initial-value: #0060a9; }
+@property --cor-erro { syntax: "<color>"; inherits: true; initial-value: #b3261e; }
+
 :root {
     /* Cores de fundo */
     --cor-fundo: #ffffff;
@@ -73,10 +98,34 @@
        para o site e o botão mudarem juntos */
     --tempo-modo: 0.9s;
     --curva-modo: cubic-bezier(0.45, 0, 0.55, 1);
-    --transicao-modo: background-color var(--tempo-modo) var(--curva-modo),
-                      color var(--tempo-modo) var(--curva-modo),
-                      border-color var(--tempo-modo) var(--curva-modo),
-                      filter var(--tempo-modo) var(--curva-modo);
+
+    /* TRANSIÇÃO 3 · mudança de modo
+       Anima as variáveis de cor (registadas com @property). Todos os
+       elementos usam estas variáveis, por isso o texto, os fundos e os
+       contornos mudam juntos, ao mesmo ritmo do botão dia/noite. */
+    transition-property: --cor-fundo,
+                         --cor-fundo-alt,
+                         --cor-cartao,
+                         --cor-texto,
+                         --cor-texto-suave,
+                         --cor-titulo,
+                         --cor-destaque,
+                         --cor-link,
+                         --cor-botao,
+                         --cor-botao-hover,
+                         --cor-botao-texto,
+                         --cor-borda,
+                         --cor-jovens,
+                         --cor-adultos,
+                         --cor-qualifica,
+                         --cor-cta-fundo,
+                         --cor-cta-texto,
+                         --cor-rodape-fundo,
+                         --cor-rodape-texto,
+                         --cor-foco,
+                         --cor-erro;
+    transition-duration: var(--tempo-modo);
+    transition-timing-function: var(--curva-modo);
 
     /* O Bootstrap também passa a usar as nossas cores */
     --bs-body-bg: var(--cor-fundo);
@@ -142,14 +191,6 @@ body {
     color: var(--cor-texto);
     font-family: var(--fonte-texto);
     line-height: 1.6;
-}
-
-/* TRANSIÇÃO 3 · mudança de modo
-   Aplica-se a todos os elementos, para nada mudar de repente.
-   :where() tem especificidade 0: qualquer regra com transição própria
-   (botões, cartões...) ganha a esta e junta-lhe var(--transicao-modo). */
-:where(*, *::before, *::after) {
-    transition: var(--transicao-modo);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -245,7 +286,7 @@ section[id] {
     box-sizing: content-box;
     padding: 0.2rem;
     border-radius: 0.5rem;
-    transition: var(--transicao-modo);
+    transition: background-color var(--tempo-modo) var(--curva-modo);
 }
 
 :root:has(#modo-escuro:checked) .brand-simbolo {
@@ -474,6 +515,11 @@ section[id] {
 }
 
 /* Ícone do menu do telemóvel visível no modo noturno */
+.navbar-toggler-icon,
+.btn-close {
+    transition: filter var(--tempo-modo) var(--curva-modo);
+}
+
 :root:has(#modo-escuro:checked) .navbar-toggler-icon {
     filter: invert(1);
 }
@@ -643,14 +689,13 @@ section[id] {
 }
 
 /* TRANSIÇÃO 2 · cartões: sombra e posição
-   (junta-se à transição de cor do modo, por isso repete-a) */
+   (as cores do modo mudam pelas variáveis, não precisam de estar aqui) */
 .cartao-area,
 .cartao-curso,
 .cartao-face,
 .cartao-noticia {
     transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                var(--transicao-modo);
+                transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .cartao-area:hover,
@@ -692,7 +737,7 @@ section[id] {
 /* Nas ligações das áreas o ícone de ligação externa já é a seta:
    ao passar o rato sobe e avança um pouco */
 .link-seta::after {
-    transition: transform 0.2s ease-out, var(--transicao-modo);
+    transition: transform 0.2s ease-out;
 }
 
 .link-seta:hover::after {
@@ -736,7 +781,7 @@ section[id] {
     height: 100%;
     transform-style: preserve-3d;
     /* TRANSIÇÃO 4 · rotação do cartão */
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), var(--transicao-modo);
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
 .cartao-face {
@@ -749,7 +794,7 @@ section[id] {
     /* O verso fica escondido também para o teclado e leitores de ecrã;
        visibility muda a meio da rotação (atraso de 0,3 s) */
     visibility: hidden;
-    transition: visibility 0s linear 0.3s, var(--transicao-modo);
+    transition: visibility 0s linear 0.3s;
 }
 
 .virar-input:checked + .cartao-curso-interior {
@@ -762,7 +807,7 @@ section[id] {
 
 .virar-input:checked + .cartao-curso-interior .cartao-frente {
     visibility: hidden;
-    transition: visibility 0s linear 0.3s, var(--transicao-modo);
+    transition: visibility 0s linear 0.3s;
 }
 
 /* «Saber mais →» que vira o cartão (é um <label> da checkbox).
@@ -783,7 +828,7 @@ section[id] {
 }
 
 .botao-virar i {
-    transition: transform 0.2s ease-out, var(--transicao-modo);
+    transition: transform 0.2s ease-out;
 }
 
 .botao-virar:hover i {
@@ -893,6 +938,7 @@ section[id] {
 }
 
 .bento-peca {
+    transition: filter var(--tempo-modo) var(--curva-modo);
     animation: entrar 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
@@ -925,6 +971,19 @@ section[id] {
 .bento-peca p {
     position: relative;
     margin: 0;
+}
+
+/* Rótulo no topo de cada bloco: diz para quem é, antes do número.
+   margin-bottom: auto empurra o resto do bloco para baixo */
+.bento-peca .bento-rotulo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: auto;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 /* O número grande fica numa linha própria, por cima do texto */
@@ -1118,8 +1177,6 @@ section[id] {
     background-color: var(--cor-fundo);
     border-color: var(--cor-borda);
     color: var(--cor-texto);
-    /* O Bootstrap tem uma transição própria que apagava a do modo */
-    transition: var(--transicao-modo), box-shadow 0.15s ease-in-out;
 }
 
 .form-control:focus {
