@@ -10,7 +10,7 @@
 
 Proposta de um novo website para o Serviço de Formação Profissional de Rio Meão, do IEFP. É uma página única com navegação entre secções: apresentação, áreas de formação, sobre nós, cursos, feed, inscrição e contactos.
 
-Os cartões dos cursos viram ao clicar na seta e mostram os detalhes no verso, sem JavaScript. No lugar das fotos há composições feitas em HTML e CSS: no hero, uma grelha «bento» com dados reais do centro; no Sobre nós, um mapa desenhado em CSS com o marcador a pulsar.
+Os cartões dos cursos viram ao clicar na seta e mostram os detalhes no verso, sem JavaScript. No hero, no lugar de uma foto, há uma grelha «bento» com dados reais do centro. Nos contactos há o mapa real do Google Maps.
 
 Todos os dados são reais e verificados: contactos do site oficial, cursos publicados no iefponline e notícias do Instagram do próprio centro. A lista completa está em [FONTES.md](FONTES.md).
 
@@ -111,12 +111,15 @@ Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e a seta d
 
 Todas usam a declaração abreviada `transition` com várias propriedades. Quem tem a opção «reduzir movimento» ligada no sistema não vê as animações (`prefers-reduced-motion`).
 
-### Composições no lugar das fotos
+### Grelha «bento» no hero
 
-Não consegui fotos com qualidade do centro, por isso fiz duas composições só com HTML e CSS:
+Não consegui fotos com qualidade do centro, por isso o hero tem uma composição só com HTML e CSS: blocos de tamanhos diferentes desenhados com `grid-template-areas`. Cada bloco tem um dado real: os 4 cursos a começar, a idade dos cursos de aprendizagem, os cursos EFA e o RVCC, e as fotos do feed do Instagram em círculos sobrepostos. É uma lista (`<ul>`), por isso o leitor de ecrã lê o texto normalmente.
 
-- **Hero, grelha «bento»:** blocos de tamanhos diferentes desenhados com `grid-template-areas`. Cada bloco tem um dado real: os 4 cursos a começar, a idade dos cursos de aprendizagem, os cursos EFA e o RVCC, e as fotos do feed do Instagram em círculos sobrepostos. É uma lista (`<ul>`), por isso o leitor de ecrã lê o texto normalmente.
-- **Sobre nós, mapa em CSS:** as ruas são dois `repeating-linear-gradient` (horizontal e vertical), a avenida é um `<span>` rodado e o marcador tem uma onda feita com `@keyframes`, que repete sem parar. Com «reduzir movimento» ligado, a onda para. Por baixo do mapa ficam a morada e o link «Como chegar» para o Google Maps.
+Os blocos entram com uma animação `@keyframes` (sobem 1rem e aparecem), um a seguir ao outro com `animation-delay`. Com «reduzir movimento» ligado, aparecem logo.
+
+### Mapa nos contactos
+
+O mapa é um `<iframe>` do Google Maps, com as coordenadas oficiais do centro. É HTML: o JavaScript do mapa corre dentro da página do Google, não no nosso site. Tem `title` para os leitores de ecrã e `loading="lazy"` para só carregar quando aparece no ecrã. No modo escuro o mapa continua claro, porque é conteúdo do Google e o nosso CSS não chega lá dentro.
 
 ### Teste de acessibilidade
 
@@ -147,6 +150,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Inspiração do botão dia/noite:** [animação no Pinterest](https://i.pinimg.com/originals/87/f9/ee/87f9eefefc480ce4416d353cd060dfc0.gif) (só a ideia; o código e as cores são próprios)
 - **Ícones:** [Bootstrap Icons](https://icons.getbootstrap.com/)
 - **Tipografia:** [Google Fonts](https://fonts.google.com/)
+- **Mapa:** [Google Maps](https://www.google.com/maps/search/?api=1&query=40.959358,-8.593725), com as coordenadas da página oficial do serviço
 
 ## 10. Dificuldades e soluções
 
@@ -160,6 +164,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Fotos do Instagram com pouca resolução e formatos diferentes.** Uso `aspect-ratio` e `object-fit: cover` para ficarem todas com o mesmo formato.
 - **A página subia ao ligar o modo escuro.** A cada clique subia 72 px. A causa era a regra `[id] { scroll-margin-top }`, feita para os saltos do menu, que também se aplicava à checkbox do botão: quando a checkbox recebia o foco, o browser fazia scroll para a afastar do topo. Limitei a regra a `section[id]`. Nos cartões acontecia o mesmo, porque a checkbox estava no canto de cima. Passei-a para o fundo, junto do «Saber mais».
 - **Setas repetidas.** Nos cartões das áreas a seta → ficava colada ao ícone de ligação externa. Tirei a seta, e o ícone externo passou a ser a seta e a animar ao passar o rato.
+- **Morada repetida.** A morada aparecia em 4 sítios (hero, cartão do Sobre nós, mapa desenhado e contactos). Experimentei um mapa desenhado em CSS no Sobre nós, mas chamava mais a atenção do que devia e não era real. Deixei a morada só nos contactos, com o mapa real do Google Maps, e o Sobre nós passou a mostrar os objetivos em cartões.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 
-Testado em 375, 768, 995, 1280 e 1920 px, nos dois modos.
+Testado em 320, 375, 768, 995, 1280 e 1920 px, nos dois modos.

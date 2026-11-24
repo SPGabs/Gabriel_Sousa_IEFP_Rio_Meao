@@ -56,12 +56,6 @@
     --cor-rodape-fundo: #0b3d20;
     --cor-rodape-texto: #e6efe9;
 
-    /* Mapa desenhado em CSS (Sobre nós) */
-    --mapa-fundo: #e6eee8;
-    --mapa-rua: #ffffff;
-    --mapa-avenida: #fbfdfb;
-    --mapa-parque: #c4e0cb;
-
     /* Estados */
     --cor-foco: #0060a9;
     --cor-erro: #b3261e;
@@ -119,11 +113,6 @@
     --cor-cta-texto: #f3f7f4;
     --cor-rodape-fundo: #0b0f0d;
     --cor-rodape-texto: #cfd8d3;
-
-    --mapa-fundo: #1a2420;
-    --mapa-rua: #26322c;
-    --mapa-avenida: #34423b;
-    --mapa-parque: #1f3a29;
 
     --cor-foco: #8cc8ff;
     --cor-erro: #ffb4ab;
@@ -577,34 +566,6 @@ section[id] {
     color: var(--cor-texto-suave);
 }
 
-/* Lista de objetivos com visto */
-.lista-check {
-    list-style: none;
-    padding-left: 0;
-}
-
-.lista-check li {
-    position: relative;
-    padding-left: 2rem;
-    margin-bottom: 0.6rem;
-}
-
-.lista-check li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0.15rem;
-    display: grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-    border-radius: 50%;
-    background-color: var(--cor-fundo);
-    color: var(--cor-destaque);
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-
 /* Chamada para inscrição */
 .secao-cta {
     background-color: var(--cor-cta-fundo);
@@ -905,6 +866,36 @@ section[id] {
     line-height: 1.35;
 }
 
+.bento-peca {
+    animation: entrar 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Os blocos entram um a seguir ao outro: cada um espera mais 0,1 s */
+.bento-jovens {
+    animation-delay: 0.1s;
+}
+
+.bento-adultos {
+    animation-delay: 0.2s;
+}
+
+.bento-feed {
+    animation-delay: 0.3s;
+}
+
+/* Animação com @keyframes: sobe 1rem e aparece */
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .bento-peca p {
     position: relative;
     margin: 0;
@@ -1008,129 +999,6 @@ section[id] {
     filter: brightness(0.85);
 }
 
-/* Mapa desenhado em CSS (secção Sobre nós) */
-.cartao-mapa {
-    --cor-area: var(--cor-destaque);
-    overflow: hidden;
-    border-radius: var(--raio-grande);
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
-    box-shadow: var(--sombra);
-}
-
-/* As ruas são dois gradientes repetidos: linhas claras a cada 3rem,
-   uma na horizontal e outra na vertical */
-.mapa-desenho {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: var(--mapa-fundo);
-    background-image:
-        repeating-linear-gradient(0deg, transparent 0 2.75rem, var(--mapa-rua) 2.75rem 3rem),
-        repeating-linear-gradient(90deg, transparent 0 3.75rem, var(--mapa-rua) 3.75rem 4rem);
-    transition: background-color var(--tempo-modo) ease;
-}
-
-/* Jardim: um retângulo com cantos muito redondos */
-.mapa-parque {
-    position: absolute;
-    top: 12%;
-    left: 6%;
-    width: 30%;
-    height: 38%;
-    border-radius: 40% 60% 55% 45%;
-    background-color: var(--mapa-parque);
-}
-
-/* Avenida principal, mais larga e inclinada */
-.mapa-avenida {
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    width: 120%;
-    height: 1.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 18%;
-    background-color: var(--mapa-avenida);
-    transform: translateY(-50%) rotate(-10deg);
-    color: var(--cor-texto-suave);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Marcador no centro do mapa */
-.mapa-pino {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: grid;
-    place-items: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: var(--cor-destaque);
-    color: var(--cor-cartao);
-    font-size: 1.35rem;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
-}
-
-/* Onda que sai do marcador: animação com @keyframes, repete sem parar */
-.mapa-pino::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background-color: var(--cor-destaque);
-    animation: pulso 2s ease-out infinite;
-    z-index: -1;
-}
-
-@keyframes pulso {
-    from {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-
-    to {
-        transform: scale(2.6);
-        opacity: 0;
-    }
-}
-
-.cartao-mapa-info {
-    padding: clamp(1.25rem, 3vw, 1.75rem);
-}
-
-.cartao-mapa-info p {
-    margin: 0;
-}
-
-.cartao-mapa-info .link-seta {
-    display: inline-block;
-    margin-top: 0.75rem;
-}
-
-.cartao-morada-titulo {
-    font-family: var(--fonte-titulos);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cor-titulo);
-}
-
-.cartao-morada-rede {
-    margin-top: 1rem !important;
-    padding-top: 1rem;
-    border-top: 1px solid var(--cor-borda);
-    color: var(--cor-texto-suave);
-    font-size: 0.9rem;
-}
-
-
 /* =====================================================================
    9. FORMULÁRIO E CONTACTOS
    ===================================================================== */
@@ -1145,7 +1013,17 @@ section[id] {
     margin-bottom: 0;
 }
 
-.contacto {
+/* Os objetivos (Sobre nós) usam o mesmo cartão dos contactos */
+.lista-objetivos {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contacto,
+.objetivo {
     display: flex;
     gap: 1rem;
     padding: 1rem 1.25rem;
@@ -1154,12 +1032,14 @@ section[id] {
     border-radius: var(--raio);
 }
 
-.contacto p {
+.contacto p,
+.objetivo p {
     margin: 0;
 }
 
 /* Ícone num círculo com a cor de destaque bem clara por trás */
-.contacto > i {
+.contacto > i,
+.objetivo > i {
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -1183,6 +1063,16 @@ section[id] {
     display: inline-block;
     margin-top: 0.35rem;
     font-weight: 600;
+}
+
+/* Mapa do Google Maps (iframe) por baixo dos contactos e do formulário */
+.mapa-google {
+    display: block;
+    width: 100%;
+    height: clamp(14rem, 30vw, 20rem);
+    margin-top: 2rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-grande);
 }
 
 .form-contacto {
@@ -1304,8 +1194,8 @@ button:focus-visible,
         transition-duration: 0.01ms !important;
     }
 
-    /* O marcador do mapa deixa de pulsar */
-    .mapa-pino::before {
+    /* Os blocos do bento aparecem logo, sem animação */
+    .bento-peca {
         animation: none;
     }
 
@@ -1445,12 +1335,5 @@ button:focus-visible,
 @media (min-width: 768px) {
     .rodape-aviso {
         text-align: left;
-    }
-}
-
-/* Tablet: o mapa ocupa a largura toda, por isso fica mais baixo */
-@media (min-width: 576px) and (max-width: 991.98px) {
-    .mapa-desenho {
-        aspect-ratio: 21 / 9;
     }
 }

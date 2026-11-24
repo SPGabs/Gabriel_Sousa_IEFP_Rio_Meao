@@ -83,7 +83,7 @@
                         <p class="etiqueta">#riomeaocontigo</p>
                         <!-- Título baseado nos cursos reais: do 6.º ano (Jardinagem) ao nível 5 (Automação) -->
                         <h1>Do 6.º ano ao nível 5, há um curso para ti.</h1>
-                        <p class="hero-texto">Cursos para jovens a partir dos 14 anos e para adultos, empregados ou desempregados. Ficamos na Av. de Santiago, em Rio Meão.</p>
+                        <p class="hero-texto">Cursos para jovens a partir dos 14 anos e para adultos, empregados ou desempregados. Ficamos em Rio Meão, Santa Maria da Feira.</p>
                         <div class="d-flex flex-wrap gap-3 mt-4">
                             <a class="btn btn-principal btn-lg" href="#cursos">Ver cursos</a>
                             <a class="btn btn-contorno btn-lg" href="#contactos">Falar connosco</a>
@@ -158,36 +158,30 @@
         <!-- ========== 3. SOBRE NÓS ========== -->
         <section id="sobre" class="secao secao-alt" aria-labelledby="titulo-sobre">
             <div class="container">
-                <div class="row gx-4 gy-5 align-items-center">
-                    <div class="col-12 col-lg-5">
-                        <!-- Mapa desenhado em CSS (decorativo, por isso aria-hidden).
-                             A morada fica em texto por baixo, com o link para o Google Maps. -->
-                        <div class="cartao-mapa">
-                            <div class="mapa-desenho" aria-hidden="true">
-                                <span class="mapa-parque"></span>
-                                <span class="mapa-avenida"><span>Av. de Santiago</span></span>
-                                <span class="mapa-pino"><i class="bi bi-geo-alt-fill"></i></span>
-                            </div>
-                            <div class="cartao-mapa-info">
-                                <p class="cartao-morada-titulo">Av. de Santiago, 88</p>
-                                <p>4520-462 Rio Meão</p>
-                                <a class="link-seta" href="https://www.google.com/maps/search/?api=1&amp;query=40.959358,-8.593725" target="_blank" rel="noopener noreferrer">Como chegar<span class="visually-hidden"> (abre o Google Maps num novo separador)</span></a>
-                                <p class="cartao-morada-rede">Centro de Emprego e Formação Profissional de Entre Douro e Vouga</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-7">
+                <div class="row gx-4 gx-lg-5 gy-4">
+                    <div class="col-12 col-lg-6">
                         <h2 id="titulo-sobre">Sobre nós</h2>
                         <p>O Serviço de Formação Profissional de Rio Meão faz parte do Centro de Emprego e Formação Profissional de Entre Douro e Vouga, do IEFP. Aqui há cursos para jovens e adultos e um Centro Qualifica.</p>
 
                         <h3 class="h5">Missão</h3>
                         <p>Como todo o IEFP, o centro existe para ajudar as pessoas a ganhar qualificações e a encontrar emprego, através da formação profissional.</p>
-
+                    </div>
+                    <div class="col-12 col-lg-6">
                         <h3 class="h5">Objetivos</h3>
-                        <ul class="lista-check">
-                            <li>Dar certificação escolar e profissional a jovens e adultos.</li>
-                            <li>Levar a formação para fora da sala, em eventos e competições como o WorldSkills.</li>
-                            <li>Reconhecer as competências de quem já trabalha, através do RVCC.</li>
+                        <!-- Mesmo estilo dos cartões de contacto: ícone num círculo e texto ao lado -->
+                        <ul class="lista-objetivos">
+                            <li class="objetivo">
+                                <i class="bi bi-award" aria-hidden="true"></i>
+                                <p>Dar certificação escolar e profissional a jovens e adultos.</p>
+                            </li>
+                            <li class="objetivo">
+                                <i class="bi bi-trophy" aria-hidden="true"></i>
+                                <p>Levar a formação para fora da sala, em eventos e competições como o WorldSkills.</p>
+                            </li>
+                            <li class="objetivo">
+                                <i class="bi bi-patch-check" aria-hidden="true"></i>
+                                <p>Reconhecer as competências de quem já trabalha, através do RVCC.</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -464,6 +458,10 @@
                         </form>
                     </div>
                 </div>
+
+                <!-- Mapa real do Google Maps num iframe (HTML, sem JavaScript nosso).
+                     title: obrigatório para os leitores de ecrã. loading="lazy": só carrega quando aparece no ecrã. -->
+                <iframe class="mapa-google" src="https://maps.google.com/maps?q=40.959358,-8.593725&amp;z=16&amp;output=embed" title="Mapa do Google Maps com a localização do IEFP Rio Meão" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="1200" height="300"></iframe>
             </div>
         </section>
     </main>
