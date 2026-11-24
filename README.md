@@ -24,7 +24,7 @@ Site de referência: [página do Rio Meão no iefp.pt](https://www.iefp.pt/detal
 
 ## 4. Conceito visual
 
-O ponto de partida foi a página inicial do [FAD do IEFP](https://fad.iefp.pt), a plataforma de formação a distância, que tem um estilo mais atual do que o iefp.pt. Do FAD aproveitei a estrutura: hero com etiqueta, título e botão, cartões com uma cor por tipo, secção com imagem e lista de vistos, chamada final antes dos contactos.
+O ponto de partida foi a página inicial do [FAD do IEFP](https://fad.iefp.pt), a plataforma de formação a distância, que tem um estilo mais atual do que o iefp.pt. Do FAD aproveitei a estrutura: hero com etiqueta, título e botão, cartões com uma cor por tipo, secção sobre o centro com lista de objetivos, chamada final antes dos contactos.
 
 As cores e as fontes vêm do site oficial [iefp.pt](https://www.iefp.pt), e não do FAD, para o site ficar ligado à marca IEFP. O IEFP não publica um manual de marca, por isso li as cores diretamente do CSS do iefp.pt. Cada cartão de área usa uma das cores que o iefp.pt usa no menu.
 
@@ -38,7 +38,7 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 |---|---|
 | A barra lateral «Navegação» parte o layout: os cartões não alinham com o hero e o fundo das secções não chega à margem | Sem barra lateral. Todas as secções usam o mesmo `.container` e o fundo ocupa a largura toda |
 | No tablet (995 px) cabem 3 cartões ao lado da barra lateral e o texto fica com 2 ou 3 palavras por linha | Os cartões só ficam em 3 colunas a partir de 992 px. Os cursos passam de 1 para 2 e depois para 4 colunas |
-| No telemóvel a navegação desce para o fim da página | O menu fica no cabeçalho fixo e abre no botão |
+| No telemóvel a navegação desce para o fim da página | O menu fica no cabeçalho fixo e abre num painel lateral no botão ☰ |
 | «Saber mais» verde-lima com pouco contraste | Testei o contraste de todas as cores nos dois modos (mínimo 4,5:1 para texto) |
 | Títulos com quebras de linha escritas à mão | `max-width` em `ch` e `text-wrap: balance` |
 | Hierarquia de títulos com saltos (h3 antes de h2) | h1 → h2 → h3 sem saltos |
@@ -47,8 +47,8 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 
 ## 5. Tecnologias
 
-- **HTML5 semântico:** `header`, `nav`, `main`, `section`, `article`, `figure`, `address`, `time`, `dl`, `footer`
-- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `grid-template-areas`, `@keyframes`, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
+- **HTML5 semântico:** `header`, `nav`, `main`, `section`, `article`, `address`, `time`, `dl`, `iframe`, `footer`
+- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis registadas com `@property`, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `grid-template-areas`, `@keyframes`, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
 - **Bootstrap 5.3.3** (CDN jsDelivr), personalizado pelo CSS próprio:
   - Grelha: `container`, `row`, `col-*`, `row-cols-*`, `g-*`/`gx-*`/`gy-*`
   - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `offcanvas`. No telemóvel o menu é um painel lateral que fecha ao escolher uma opção, ao clicar fora, no X ou com a tecla Esc. O único JavaScript do site é o do Bootstrap
@@ -77,7 +77,7 @@ As cores escuras do IEFP ficam ilegíveis sobre fundo escuro (o verde #00662B te
 
 ## 7. Principais variáveis CSS
 
-Definidas em `:root` e redefinidas no modo noturno:
+Definidas em `:root` e redefinidas no modo noturno. As 21 variáveis de cor estão também registadas com `@property` como `<color>`, para poderem ser animadas:
 
 | Variável | Para quê |
 |---|---|
@@ -108,9 +108,9 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 
 Cada cartão tem uma checkbox escondida. As setas → e ← são `<label>` dessa checkbox: ao clicar, a checkbox muda e o seletor `.virar-input:checked + .cartao-curso-interior` roda só esse cartão. A frente e o verso ficam na mesma célula de uma grelha (`grid-area: 1 / 1`), por isso o cartão fica com a altura do lado maior. O lado de trás fica com `visibility: hidden`, para o teclado e os leitores de ecrã não lerem o que não se vê.
 
-Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e a seta dos cartões de áreas desliza 4 px (`ease-out`).
+Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e o ícone das ligações das áreas sobe e avança 2 px (`ease-out`).
 
-Todas usam a declaração abreviada `transition` com várias propriedades. Quem tem a opção «reduzir movimento» ligada no sistema não vê as animações (`prefers-reduced-motion`).
+As transições 1, 2, 4 e 5 usam a declaração abreviada `transition` com várias propriedades. A 3 usa as propriedades longas (`transition-property`, `transition-duration`, `transition-timing-function`), porque a lista de variáveis é grande e assim lê-se melhor. Quem tem a opção «reduzir movimento» ligada no sistema não vê as animações (`prefers-reduced-motion`).
 
 ### Grelha «bento» no hero
 
@@ -174,4 +174,4 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Blocos do bento confusos.** «14–29» e «EFA» apareciam sem contexto, e a explicação só vinha por baixo. Cada bloco ganhou um rótulo no topo com ícone (Oferta formativa, Jovens, Adultos), como os cartões das áreas.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 
-Testado em 320, 375, 768, 995, 1280 e 1920 px, nos dois modos.
+Testado em 320, 360, 375, 768, 995, 1280 e 1920 px, nos dois modos.

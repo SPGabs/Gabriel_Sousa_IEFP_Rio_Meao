@@ -1,6 +1,6 @@
 # Fontes
 
-Lista de onde veio cada informação usada no site. Esta lista vai passar para o README (ponto 9).
+Lista de onde veio cada informação usada no site. O README (ponto 9) tem um resumo; aqui fica a lista completa.
 
 Legenda: ✅ confirmado na fonte oficial · ⚠️ só encontrado em sites não oficiais
 
@@ -13,7 +13,7 @@ Fonte: [iefp.pt, página do serviço](https://www.iefp.pt/detalheservico?id=3236
 | Morada | Av. de Santiago, 88, 4520-462 Rio Meão | ✅ |
 | Telefone | 25 602 97 00 | ✅ |
 | Horário de atendimento | 9h00 às 18h00 (os dias, «dias úteis exceto feriados», vêm do diretório não oficial [ocentrodeemprego.com](https://www.ocentrodeemprego.com/formacao-profissional/norte/rio-meao/), consultado a 24/11/2026) | ✅ hora, ⚠️ dias |
-| Coordenadas GPS | N 40° 57.5615, W 8° 35.6235 | ✅ |
+| Coordenadas GPS | N 40° 57.5615, W 8° 35.6235 (usadas no mapa do Google Maps e no link «Como chegar») | ✅ |
 | Estrutura | Delegação Regional do Norte, Centro de Emprego e Formação Profissional de Entre Douro e Vouga | ✅ |
 | Contacto por mensagem | Através do iefponline, opção «Contactar o IEFP» | ✅ |
 | Email | sfp.riomeao@iefp.pt. Não está no iefp.pt, mas o próprio centro publica-o no Instagram ([publicação de 15/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DeiQL90Ixlt/)) | ✅ |
@@ -28,7 +28,6 @@ Fonte: [iefponline, ofertas de formação](https://iefponline.iefp.pt/IEFP/pesqu
 | Técnico Especialista em Automação, Robótica e Manutenção Industrial | Metalurgia e Metalomecânica | 1518 h, presencial (500 h de estágio, segundo a [publicação do centro](https://www.instagram.com/riomeaocontigo_iefp/reel/DeiQL90Ixlt/)) | 10/11/2026 | Cursos de Aprendizagem + | Nível 5 | 12.º ano ou nível 5, 18 a 29 anos | [283870](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870) |
 | Técnico de Instalações Elétricas | Eletricidade e Energia | 1538 h, presencial | 04/11/2026 | Cursos EFA NS Profissional | Nível 4 | 12.º ano, 18 ou mais anos | [289791](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=289791) |
 | Operador de Jardinagem | Floricultura e Jardinagem | 1470 h, presencial | 26/10/2026 | Cursos EFA B3 Dupla Certificação | 9.º ano e Nível 2 | 6.º ano, 18 ou mais anos | [288049](https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288049) |
-| UX/UI Design | (a confirmar) | 325 h | 06/07/2026 | (a confirmar) | (a confirmar) | (a confirmar) | Plataforma FAD do IEFP (página privada, só com sessão iniciada) |
 
 Atenção: as ofertas no iefponline mudam com o tempo. Antes da entrega, voltar a abrir cada link e confirmar.
 
@@ -48,9 +47,9 @@ Atenção: as ofertas no iefponline mudam com o tempo. Antes da entrega, voltar 
 | IEFP Portugal (nacional) | [facebook.com/iefp.pt](https://www.facebook.com/iefp.pt/) | ✅ ligado a partir do iefp.pt |
 | Centro de Emprego e Formação Profissional de Entre Douro e Vouga (conta do Rio Meão, hashtag #riomeaocontigo) | [instagram.com/riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/) | ✅ conta do próprio centro |
 
-## Publicações candidatas para as Notícias
+## Publicações candidatas para o Feed
 
-Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/), legendas lidas a 20/11/2026.
+Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/), legendas lidas a 20/11/2026. As 3 primeiras são as que estão no site.
 
 | Data | Assunto | Link |
 |---|---|---|
