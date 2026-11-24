@@ -1,0 +1,749 @@
+/* =====================================================================
+   IEFP Rio Meão · folha de estilos própria
+   Carregada depois do Bootstrap para o poder personalizar.
+
+   Índice
+   1. Variáveis (modo diurno)
+   2. Modo noturno
+   3. Base
+   4. Cabeçalho e navegação
+   5. Botões
+   6. Secções
+   7. Cartões
+   8. Detalhes dos cursos
+   9. Formulário e contactos
+   10. Rodapé
+   11. Acessibilidade
+   12. Media queries
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. VARIÁVEIS · MODO DIURNO
+   Cores tiradas do CSS do site oficial iefp.pt (ver FONTES.md).
+   ===================================================================== */
+:root {
+    /* Cores de fundo */
+    --cor-fundo: #ffffff;
+    --cor-fundo-alt: #f2f7f3;
+    --cor-cartao: #ffffff;
+
+    /* Cores de texto */
+    --cor-texto: #383838;
+    --cor-texto-suave: #636f77;
+    --cor-titulo: #0b3d20;
+
+    /* Cor de destaque e ligações */
+    --cor-destaque: #00662b;
+    --cor-link: #0060a9;
+
+    /* Botões */
+    --cor-botao: #00662b;
+    --cor-botao-hover: #004d20;
+    --cor-botao-texto: #ffffff;
+
+    /* Contornos e separadores */
+    --cor-borda: #d9e2dc;
+
+    /* Uma cor por área (as mesmas do menu do iefp.pt) */
+    --cor-jovens: #0060a9;
+    --cor-adultos: #26872e;
+    --cor-qualifica: #027eb0;
+
+    /* Chamada para inscrição e rodapé */
+    --cor-cta-fundo: #00662b;
+    --cor-cta-texto: #ffffff;
+    --cor-rodape-fundo: #0b3d20;
+    --cor-rodape-texto: #e6efe9;
+
+    /* Estados */
+    --cor-foco: #0060a9;
+    --cor-erro: #b3261e;
+
+    /* Valores partilhados */
+    --raio: 0.75rem;
+    --raio-grande: 1.5rem;
+    --sombra: 0 1px 3px rgb(0 0 0 / 0.08);
+    --sombra-hover: 0 12px 28px rgb(0 0 0 / 0.12);
+    --espaco-secao: clamp(3rem, 6vw, 5.5rem);
+    --fonte-titulos: "Roboto", Arial, sans-serif;
+    --fonte-texto: "Open Sans", Arial, sans-serif;
+
+    /* Duração da mudança de modo (usada em vários elementos) */
+    --tempo-modo: 0.4s;
+
+    /* O Bootstrap também passa a usar as nossas cores */
+    --bs-body-bg: var(--cor-fundo);
+    --bs-body-color: var(--cor-texto);
+    --bs-body-font-family: var(--fonte-texto);
+    --bs-border-color: var(--cor-borda);
+}
+
+
+/* =====================================================================
+   2. MODO NOTURNO
+   Sem JavaScript: :has() verifica se a checkbox #modo-escuro está ligada.
+   Só mudam os valores das variáveis, o resto da folha fica igual.
+   As cores escuras do IEFP ficam ilegíveis sobre fundo escuro, por isso
+   aqui usamos versões mais claras do mesmo tom.
+   ===================================================================== */
+:root:has(#modo-escuro:checked) {
+    --cor-fundo: #111614;
+    --cor-fundo-alt: #18201c;
+    --cor-cartao: #1c2420;
+
+    --cor-texto: #e3e9e5;
+    --cor-texto-suave: #a9b5ae;
+    --cor-titulo: #f3f7f4;
+
+    --cor-destaque: #6cc58a;
+    --cor-link: #8cc8ff;
+
+    --cor-botao: #6cc58a;
+    --cor-botao-hover: #8fd6a6;
+    --cor-botao-texto: #0b1f12;
+
+    --cor-borda: #2f3a34;
+
+    --cor-jovens: #7db9f0;
+    --cor-adultos: #74cf80;
+    --cor-qualifica: #62c4e6;
+
+    --cor-cta-fundo: #1d3a28;
+    --cor-cta-texto: #f3f7f4;
+    --cor-rodape-fundo: #0b0f0d;
+    --cor-rodape-texto: #cfd8d3;
+
+    --cor-foco: #8cc8ff;
+    --cor-erro: #ffb4ab;
+
+    --sombra: 0 1px 3px rgb(0 0 0 / 0.4);
+    --sombra-hover: 0 12px 28px rgb(0 0 0 / 0.5);
+
+    color-scheme: dark;
+}
+
+
+/* =====================================================================
+   3. BASE
+   ===================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-texto);
+    line-height: 1.6;
+}
+
+/* TRANSIÇÃO 3 · mudança de modo
+   Declaração abreviada com várias propriedades. */
+body,
+.site-header,
+.navbar-collapse,
+.secao,
+.cartao-area,
+.cartao-curso,
+.cartao-noticia,
+.form-control,
+.site-footer {
+    transition: background-color var(--tempo-modo) ease,
+                color var(--tempo-modo) ease,
+                border-color var(--tempo-modo) ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonte-titulos);
+    font-weight: 700;
+    color: var(--cor-titulo);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--cor-link);
+    text-underline-offset: 0.2em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+    margin: 0;
+}
+
+/* Compensa o cabeçalho fixo ao saltar para uma secção */
+[id] {
+    scroll-margin-top: 5.5rem;
+}
+
+/* Etiqueta pequena por cima dos títulos (hero e inscrição) */
+.etiqueta {
+    display: inline-block;
+    padding: 0.25rem 0.9rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: var(--cor-destaque);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+
+/* =====================================================================
+   4. CABEÇALHO E NAVEGAÇÃO
+   ===================================================================== */
+.site-header {
+    background-color: var(--cor-fundo);
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-titulos);
+}
+
+.brand:hover,
+.brand:focus {
+    color: var(--cor-titulo);
+}
+
+.navbar .nav-link {
+    position: relative;
+    color: var(--cor-texto);
+    font-weight: 600;
+    border-radius: 0.5rem;
+    /* TRANSIÇÃO 2b · ligações do menu */
+    transition: color 0.2s linear, background-color 0.2s linear;
+}
+
+.navbar .nav-link:hover {
+    color: var(--cor-destaque);
+    background-color: var(--cor-fundo-alt);
+}
+
+/* Interruptor do modo noturno (componente form-switch do Bootstrap) */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0;
+}
+
+.theme-switch .form-check-input {
+    float: none;
+    margin: 0;
+    cursor: pointer;
+    background-color: var(--cor-fundo-alt);
+    border-color: var(--cor-borda);
+}
+
+.theme-switch .form-check-input:checked {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+}
+
+.theme-switch .form-check-label {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Ícone do menu do telemóvel visível no modo noturno */
+:root:has(#modo-escuro:checked) .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+.navbar-toggler {
+    border-color: var(--cor-borda);
+}
+
+
+/* =====================================================================
+   5. BOTÕES
+   ===================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    /* TRANSIÇÃO 1 · botões: cor de fundo e posição */
+    transition: background-color 0.2s ease-in-out,
+                color 0.2s ease-in-out,
+                border-color 0.2s ease-in-out,
+                transform 0.2s ease-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-principal {
+    background-color: var(--cor-botao);
+    border: 2px solid var(--cor-botao);
+    color: var(--cor-botao-texto);
+}
+
+.btn-principal:hover,
+.btn-principal:focus-visible {
+    background-color: var(--cor-botao-hover);
+    border-color: var(--cor-botao-hover);
+    color: var(--cor-botao-texto);
+}
+
+.btn-contorno {
+    background-color: transparent;
+    border: 2px solid var(--cor-botao);
+    color: var(--cor-destaque);
+}
+
+.btn-contorno:hover,
+.btn-contorno:focus-visible {
+    background-color: var(--cor-botao);
+    color: var(--cor-botao-texto);
+}
+
+
+/* =====================================================================
+   6. SECÇÕES
+   O fundo ocupa a largura toda; o conteúdo fica no .container.
+   ===================================================================== */
+.secao {
+    padding-block: var(--espaco-secao);
+}
+
+.secao-alt {
+    background-color: var(--cor-fundo-alt);
+}
+
+/* Hero */
+.hero {
+    padding-block: var(--espaco-secao);
+    background: linear-gradient(180deg, var(--cor-fundo-alt), var(--cor-fundo));
+}
+
+.hero h1 {
+    margin-block: 1rem;
+    max-width: 16ch;
+    font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
+}
+
+.hero-texto {
+    max-width: 52ch;
+    font-size: 1.125rem;
+    color: var(--cor-texto-suave);
+}
+
+.hero-foto img,
+.sobre-foto img {
+    width: 100%;
+    border-radius: var(--raio-grande);
+}
+
+/* Lista de objetivos com visto */
+.lista-check {
+    list-style: none;
+    padding-left: 0;
+}
+
+.lista-check li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.6rem;
+}
+
+.lista-check li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background-color: var(--cor-fundo);
+    color: var(--cor-destaque);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Chamada para inscrição */
+.secao-cta {
+    background-color: var(--cor-cta-fundo);
+    color: var(--cor-cta-texto);
+    text-align: center;
+}
+
+.secao-cta h2,
+.secao-cta .etiqueta {
+    color: var(--cor-cta-texto);
+}
+
+.secao-cta p {
+    max-width: 48ch;
+    margin-inline: auto;
+}
+
+/* Botão invertido para contrastar com o fundo verde */
+.secao-cta .btn-principal {
+    background-color: var(--cor-cta-texto);
+    border-color: var(--cor-cta-texto);
+    color: var(--cor-cta-fundo);
+}
+
+.secao-cta .btn-principal:hover,
+.secao-cta .btn-principal:focus-visible {
+    background-color: transparent;
+    color: var(--cor-cta-texto);
+}
+
+
+/* =====================================================================
+   7. CARTÕES
+   Flexbox em coluna + margin-top: auto: o link/botão fica sempre no
+   fundo do cartão, mesmo com textos de tamanhos diferentes.
+   ===================================================================== */
+.cartao-area,
+.cartao-curso,
+.cartao-noticia {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background-color: var(--cor-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+}
+
+/* TRANSIÇÃO 2 · cartões: sombra e posição
+   (junta-se à transição de cor do modo, por isso repete-a) */
+.cartao-area,
+.cartao-curso,
+.cartao-noticia {
+    transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                background-color var(--tempo-modo) ease,
+                border-color var(--tempo-modo) ease;
+}
+
+.cartao-area:hover,
+.cartao-curso:hover,
+.cartao-noticia:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+}
+
+.cartao-area > a,
+.cartao-curso > .btn,
+.cartao-noticia > a:last-child {
+    margin-top: auto;
+}
+
+/* Cartões de áreas: cada um com a sua cor */
+.area-jovens { --cor-area: var(--cor-jovens); }
+.area-adultos { --cor-area: var(--cor-adultos); }
+.area-qualifica { --cor-area: var(--cor-qualifica); }
+
+.cartao-area {
+    border-top: 4px solid var(--cor-area);
+}
+
+.cartao-area h3 i {
+    color: var(--cor-area);
+}
+
+.link-seta {
+    color: var(--cor-area);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link-seta i {
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+}
+
+.link-seta:hover i {
+    transform: translateX(4px);
+}
+
+/* Cartões de cursos */
+.curso-area {
+    margin: 0;
+    color: var(--cor-destaque);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.curso-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+}
+
+.cartao-curso > .btn {
+    align-self: flex-start;
+}
+
+/* Cartões de notícias: fotos com o mesmo formato, mesmo as verticais */
+.cartao-noticia img {
+    width: calc(100% + 3rem);
+    max-width: none;
+    margin: -1.5rem -1.5rem 0.75rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--raio) var(--raio) 0 0;
+}
+
+.cartao-noticia time {
+    color: var(--cor-texto-suave);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+
+/* =====================================================================
+   8. DETALHES DOS CURSOS
+   CSS Grid: nome do campo numa coluna, valor na outra.
+   ===================================================================== */
+.detalhe dl {
+    display: grid;
+    grid-template-columns: minmax(9rem, max-content) 1fr;
+    gap: 0.4rem 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--cor-destaque);
+}
+
+.detalhe dt {
+    font-weight: 600;
+    color: var(--cor-titulo);
+}
+
+.detalhe dd {
+    margin: 0;
+}
+
+.detalhe > a {
+    display: inline-block;
+    margin-right: 1.25rem;
+    font-weight: 600;
+}
+
+
+/* =====================================================================
+   9. FORMULÁRIO E CONTACTOS
+   ===================================================================== */
+.lista-contactos {
+    font-style: normal;
+}
+
+.lista-contactos p {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.lista-contactos i {
+    color: var(--cor-destaque);
+}
+
+.form-contacto {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background-color: var(--cor-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.form-control {
+    background-color: var(--cor-fundo);
+    border-color: var(--cor-borda);
+    color: var(--cor-texto);
+}
+
+.form-control:focus {
+    background-color: var(--cor-fundo);
+    border-color: var(--cor-destaque);
+    color: var(--cor-texto);
+    box-shadow: 0 0 0 0.2rem rgb(0 102 43 / 0.25);
+}
+
+/* Validação em HTML: só marca o erro depois de a pessoa mexer no campo */
+.form-control:user-invalid {
+    border-color: var(--cor-erro);
+}
+
+
+/* =====================================================================
+   10. RODAPÉ
+   ===================================================================== */
+.site-footer {
+    padding-block: 3rem 1.5rem;
+    background-color: var(--cor-rodape-fundo);
+    color: var(--cor-rodape-texto);
+}
+
+.site-footer h2 {
+    color: var(--cor-rodape-texto);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.site-footer a {
+    color: var(--cor-rodape-texto);
+}
+
+.rodape-marca {
+    font-family: var(--fonte-titulos);
+    font-size: 1.25rem;
+}
+
+.rodape-links {
+    list-style: none;
+    padding: 0;
+}
+
+.rodape-links li {
+    margin-bottom: 0.35rem;
+}
+
+.rodape-aviso {
+    margin: 2rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+
+/* =====================================================================
+   11. ACESSIBILIDADE
+   ===================================================================== */
+
+/* Foco visível ao navegar com o teclado */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.form-check-input:focus-visible,
+.navbar-toggler:focus-visible {
+    outline: 3px solid var(--cor-foco);
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+.site-footer a:focus-visible,
+.secao-cta a:focus-visible {
+    outline-color: currentColor;
+}
+
+/* Ligação «Saltar para o conteúdo»: só aparece quando recebe foco */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 2000;
+    padding: 0.5rem 1rem;
+    background-color: var(--cor-botao);
+    color: var(--cor-botao-texto);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Quem pede menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+    .btn:hover,
+    .cartao-area:hover,
+    .cartao-curso:hover,
+    .cartao-noticia:hover {
+        transform: none;
+    }
+}
+
+
+/* =====================================================================
+   12. MEDIA QUERIES PRÓPRIAS
+   ===================================================================== */
+
+/* Telemóvel e tablet (menu fechado no botão) */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+        background-color: var(--cor-fundo-alt);
+        border-radius: var(--raio);
+    }
+
+    .navbar .nav-link {
+        padding-inline: 0.75rem;
+    }
+
+    .theme-switch {
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        border-top: 1px solid var(--cor-borda);
+    }
+}
+
+/* Telemóvel */
+@media (max-width: 575.98px) {
+    /* Botões do hero ocupam a largura toda, mais fáceis de tocar */
+    .hero .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Na ficha do curso o nome do campo passa para cima do valor */
+    .detalhe dl {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+    }
+
+    .detalhe dd {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* Computador: separa melhor as colunas do rodapé */
+@media (min-width: 768px) {
+    .rodape-aviso {
+        text-align: left;
+    }
+}
