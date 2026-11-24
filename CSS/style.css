@@ -250,6 +250,7 @@ figure {
    no computador passa para o fim, depois dos links (order). */
 .theme-switch {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 0.5rem;
     padding-left: 0;
@@ -270,6 +271,7 @@ figure {
 
     position: relative;
     display: flex;
+    flex-shrink: 0; /* não deixa o menu encolher o botão */
     align-items: center;
     width: var(--tema-largura);
     height: calc(var(--tema-bola) + 2 * var(--tema-folga));
