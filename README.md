@@ -59,7 +59,9 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 
 ## 6. Modos diurno e noturno
 
-O interruptor está no cabeçalho, sempre visível, também no telemóvel. Funciona **sem JavaScript**: é uma checkbox, e o CSS usa `:root:has(#modo-escuro:checked)` para trocar os valores das variáveis. O resto da folha de estilos não muda.
+O botão está no cabeçalho, sempre visível, também no telemóvel. É uma pílula com o texto «Modo escuro» dentro: escura quando está desligado, clara quando está ligado. A bola desliza de um lado para o outro e a lua dá lugar ao sol. No telemóvel pequeno fica só com a bola.
+
+Funciona **sem JavaScript**: é uma checkbox escondida com um `<label>` por cima, e o CSS usa `:root:has(#modo-escuro:checked)` para trocar os valores das variáveis. O resto da folha de estilos não muda.
 
 | | Diurno | Noturno |
 |---|---|---|
@@ -97,6 +99,7 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 | 2 | Cartões (áreas, cursos, notícias) | `box-shadow`, `transform` (sobe 4 px) | 0,3 s | `cubic-bezier(0.2, 0.8, 0.2, 1)` |
 | 3 | Mudança de modo (página, cabeçalho, cartões, formulário, rodapé) | `background-color`, `color`, `border-color` | 0,4 s | `ease` |
 | 4 | Cartões dos cursos a virar | `transform` (`rotateY(180deg)`) e `visibility` com atraso de 0,3 s | 0,6 s | `cubic-bezier(0.4, 0.2, 0.2, 1)` |
+| 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform` da bola; `opacity` e `transform` da lua e do sol | 0,3 a 0,4 s | `ease`, `cubic-bezier(0.4, 0, 0.2, 1)` e `cubic-bezier(0.34, 1.56, 0.64, 1)` (com ressalto) |
 
 ### Como o cartão vira sem JavaScript
 
