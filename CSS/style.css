@@ -218,6 +218,19 @@ figure {
     color: var(--cor-titulo);
 }
 
+/* O verde escuro do símbolo do IEFP não se vê sobre fundo escuro:
+   no modo noturno o símbolo ganha uma base clara */
+.brand-simbolo {
+    box-sizing: content-box;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    transition: background-color var(--tempo-modo) ease;
+}
+
+:root:has(#modo-escuro:checked) .brand-simbolo {
+    background-color: #f3f7f4;
+}
+
 .navbar .nav-link {
     position: relative;
     color: var(--cor-texto);

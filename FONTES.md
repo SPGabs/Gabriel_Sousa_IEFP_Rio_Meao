@@ -70,3 +70,9 @@ Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_i
 | noticia-worldskills.jpg | Capa do [reel de 29/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DfGGSIWuxKd/) | 360×640, provisória (tem o ícone ▶) |
 | noticia-house-of-fashion.jpg | 1.ª foto do [post de 29/10/2026](https://www.instagram.com/riomeaocontigo_iefp/p/DfGD2xRjn6M/) | 640×640, provisória |
 | noticia-congresso.jpg | Capa do [reel de 17/10/2026](https://www.instagram.com/riomeaocontigo_iefp/reel/DemyQguu6rY/) | 360×640, provisória (tem o ícone ▶) |
+
+## Logótipo
+
+| Ficheiro | Origem | Notas |
+|---|---|---|
+| iefp-simbolo.svg | Símbolo oficial do IEFP, publicado em [fad.iefp.pt](https://fad.iefp.pt/theme/mb2nlchildtemplate/alfasoft/assets/images/iefp-mark.svg) | Descarregado a 24/11/2026. Usado no favicon e no cabeçalho. O Rio Meão não tem logótipo próprio |

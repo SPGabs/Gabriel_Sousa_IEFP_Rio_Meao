@@ -116,6 +116,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Feed e fotos do feed:** [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/)
 - **Cores e fontes:** CSS do [iefp.pt](https://www.iefp.pt)
 - **Estrutura de referência:** página inicial do [FAD do IEFP](https://fad.iefp.pt)
+- **Logótipo e favicon:** símbolo oficial do IEFP, publicado no [FAD](https://fad.iefp.pt)
 - **Ícones:** [Bootstrap Icons](https://icons.getbootstrap.com/)
 - **Tipografia:** [Google Fonts](https://fonts.google.com/)
 
