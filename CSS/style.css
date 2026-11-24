@@ -338,7 +338,8 @@ figure {
 
 .hero h1 {
     margin-block: 1rem;
-    max-width: 16ch;
+    max-width: 20ch;
+    text-wrap: balance; /* equilibra as linhas e evita uma palavra sozinha no fim */
     font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
 }
 
