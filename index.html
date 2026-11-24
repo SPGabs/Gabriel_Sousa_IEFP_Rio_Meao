@@ -37,10 +37,16 @@
 
                 <!-- Modo noturno sem JavaScript: o CSS lê o estado desta checkbox com :has().
                      Fica fora do menu para estar sempre visível, também no telemóvel. -->
-                <div class="form-check form-switch theme-switch mb-0">
-                    <input class="form-check-input" type="checkbox" role="switch" id="modo-escuro">
-                    <label class="form-check-label" for="modo-escuro">
-                        <i class="bi bi-moon-stars" aria-hidden="true"></i> Modo noturno
+                <!-- A checkbox fica escondida; o <label> é o botão que se vê.
+                     A bola desliza e troca a lua pelo sol quando o modo escuro liga. -->
+                <div class="theme-switch">
+                    <input class="tema-input visually-hidden" type="checkbox" role="switch" id="modo-escuro">
+                    <label class="tema-botao" for="modo-escuro">
+                        <span class="tema-bola" aria-hidden="true">
+                            <i class="bi bi-moon-stars-fill tema-lua"></i>
+                            <i class="bi bi-sun-fill tema-sol"></i>
+                        </span>
+                        <span class="tema-texto">Modo escuro</span>
                     </label>
                 </div>
 
@@ -192,10 +198,7 @@
                                         <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-23">23 nov 2026</time></li>
                                     </ul>
                                     <p>Curso do Sistema de Aprendizagem para jovens dos 14 aos 29 anos. Dá equivalência ao 12.º ano.</p>
-                                    <label class="botao-virar" for="virar-software">
-                                        <span class="visually-hidden">Saber mais sobre Técnico/a de Desenvolvimento de Software</span>
-                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                                    </label>
+                                    <label class="botao-virar" for="virar-software">Saber mais<span class="visually-hidden"> sobre Técnico/a de Desenvolvimento de Software</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></label>
                                 </div>
                                 <!-- Verso: dl é uma lista de pares «campo: valor» -->
                                 <div class="cartao-face cartao-verso">
@@ -208,10 +211,7 @@
                                         <dt>Regime</dt><dd>Presencial, horário laboral</dd>
                                     </dl>
                                     <div class="verso-rodape">
-                                        <label class="botao-virar botao-voltar" for="virar-software">
-                                            <span class="visually-hidden">Voltar à frente do cartão</span>
-                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                                        </label>
+                                        <label class="botao-virar botao-voltar" for="virar-software"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</label>
                                         <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288807" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a de Desenvolvimento de Software (abre num novo separador)</span></a>
                                     </div>
                                 </div>
@@ -231,10 +231,7 @@
                                         <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-10">10 nov 2026</time></li>
                                     </ul>
                                     <p>Curso de nível 5 para quem já tem o 12.º ano. Inclui 500 horas de estágio.</p>
-                                    <label class="botao-virar" for="virar-automacao">
-                                        <span class="visually-hidden">Saber mais sobre Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</span>
-                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                                    </label>
+                                    <label class="botao-virar" for="virar-automacao">Saber mais<span class="visually-hidden"> sobre Técnico/a Especialista em Automação, Robótica e Manutenção Industrial</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></label>
                                 </div>
                                 <!-- Verso: dl é uma lista de pares «campo: valor» -->
                                 <div class="cartao-face cartao-verso">
@@ -247,10 +244,7 @@
                                         <dt>Regime</dt><dd>Presencial, horário laboral, 12 meses com 500 horas de estágio</dd>
                                     </dl>
                                     <div class="verso-rodape">
-                                        <label class="botao-virar botao-voltar" for="virar-automacao">
-                                            <span class="visually-hidden">Voltar à frente do cartão</span>
-                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                                        </label>
+                                        <label class="botao-virar botao-voltar" for="virar-automacao"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</label>
                                         <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=283870" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a Especialista em Automação, Robótica e Manutenção Industrial (abre num novo separador)</span></a>
                                     </div>
                                 </div>
@@ -270,10 +264,7 @@
                                         <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-11-04">4 nov 2026</time></li>
                                     </ul>
                                     <p>Curso EFA para adultos com o 12.º ano. Dá certificação profissional de nível 4.</p>
-                                    <label class="botao-virar" for="virar-eletricidade">
-                                        <span class="visually-hidden">Saber mais sobre Técnico/a de Instalações Elétricas</span>
-                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                                    </label>
+                                    <label class="botao-virar" for="virar-eletricidade">Saber mais<span class="visually-hidden"> sobre Técnico/a de Instalações Elétricas</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></label>
                                 </div>
                                 <!-- Verso: dl é uma lista de pares «campo: valor» -->
                                 <div class="cartao-face cartao-verso">
@@ -286,10 +277,7 @@
                                         <dt>Regime</dt><dd>Presencial, horário laboral</dd>
                                     </dl>
                                     <div class="verso-rodape">
-                                        <label class="botao-virar botao-voltar" for="virar-eletricidade">
-                                            <span class="visually-hidden">Voltar à frente do cartão</span>
-                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                                        </label>
+                                        <label class="botao-virar botao-voltar" for="virar-eletricidade"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</label>
                                         <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=289791" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Técnico/a de Instalações Elétricas (abre num novo separador)</span></a>
                                     </div>
                                 </div>
@@ -309,10 +297,7 @@
                                         <li><i class="bi bi-calendar3" aria-hidden="true"></i> Início: <time datetime="2026-10-26">26 out 2026</time></li>
                                     </ul>
                                     <p>Curso EFA de dupla certificação para adultos com o 6.º ano. Dá o 9.º ano e o nível 2.</p>
-                                    <label class="botao-virar" for="virar-jardinagem">
-                                        <span class="visually-hidden">Saber mais sobre Operador/a de Jardinagem</span>
-                                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                                    </label>
+                                    <label class="botao-virar" for="virar-jardinagem">Saber mais<span class="visually-hidden"> sobre Operador/a de Jardinagem</span> <i class="bi bi-arrow-right" aria-hidden="true"></i></label>
                                 </div>
                                 <!-- Verso: dl é uma lista de pares «campo: valor» -->
                                 <div class="cartao-face cartao-verso">
@@ -325,10 +310,7 @@
                                         <dt>Regime</dt><dd>Presencial, horário laboral</dd>
                                     </dl>
                                     <div class="verso-rodape">
-                                        <label class="botao-virar botao-voltar" for="virar-jardinagem">
-                                            <span class="visually-hidden">Voltar à frente do cartão</span>
-                                            <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                                        </label>
+                                        <label class="botao-virar botao-voltar" for="virar-jardinagem"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</label>
                                         <a href="https://iefponline.iefp.pt/IEFP/pesquisas/detalheOfertasFormacao.do?idFormacao=288049" target="_blank" rel="noopener noreferrer">Ver no iefponline<span class="visually-hidden">: Operador/a de Jardinagem (abre num novo separador)</span></a>
                                     </div>
                                 </div>
