@@ -232,12 +232,17 @@ figure {
     background-color: var(--cor-fundo-alt);
 }
 
-/* Interruptor do modo noturno (componente form-switch do Bootstrap) */
+/* Interruptor do modo noturno (componente form-switch do Bootstrap)
+   No telemóvel fica entre o logótipo e o botão do menu;
+   no computador passa para o fim, depois dos links (order). */
 .theme-switch {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding-left: 0;
+    margin-left: auto;
+    margin-right: 0.75rem;
+    font-size: 0.9rem;
 }
 
 .theme-switch .form-check-input {
@@ -715,11 +720,18 @@ button:focus-visible,
     .navbar .nav-link {
         padding-inline: 0.75rem;
     }
+}
+
+/* Computador: interruptor depois dos links do menu */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        order: 2;
+    }
 
     .theme-switch {
-        padding: 0.75rem;
-        margin-top: 0.5rem;
-        border-top: 1px solid var(--cor-borda);
+        order: 3;
+        margin-left: 1.25rem;
+        margin-right: 0;
     }
 }
 
