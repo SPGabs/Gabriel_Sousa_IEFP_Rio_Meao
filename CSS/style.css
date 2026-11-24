@@ -722,6 +722,14 @@ button:focus-visible,
     }
 }
 
+/* Tablet: as notícias ficam numa coluna; a foto fica mais baixa
+   para o cartão não ficar enorme */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .cartao-noticia img {
+        aspect-ratio: 16 / 9;
+    }
+}
+
 /* Computador: interruptor depois dos links do menu */
 @media (min-width: 992px) {
     .navbar-collapse {
