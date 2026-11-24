@@ -8,7 +8,9 @@
 
 ## 2. O projeto
 
-Proposta de um novo website para o Serviço de Formação Profissional de Rio Meão, do IEFP. É uma página única com navegação entre secções: apresentação, áreas de formação, sobre nós, cursos, notícias, inscrição e contactos.
+Proposta de um novo website para o Serviço de Formação Profissional de Rio Meão, do IEFP. É uma página única com navegação entre secções: apresentação, áreas de formação, sobre nós, cursos, feed, inscrição e contactos.
+
+Os cartões dos cursos viram ao clicar na seta e mostram os detalhes no verso, sem JavaScript. As imagens do hero e do Sobre nós são, por agora, composições feitas em HTML e CSS.
 
 Todos os dados são reais e verificados: contactos do site oficial, cursos publicados no iefponline e notícias do Instagram do próprio centro. A lista completa está em [FONTES.md](FONTES.md).
 
@@ -45,7 +47,7 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 ## 5. Tecnologias
 
 - **HTML5 semântico:** `header`, `nav`, `main`, `section`, `article`, `figure`, `address`, `time`, `dl`, `footer`
-- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, Flexbox, CSS Grid, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
+- **CSS3** (ficheiro próprio `CSS/style.css`): variáveis, `:has()`, transformações 3D (`perspective`, `rotateY`, `backface-visibility`), Flexbox, CSS Grid, `clamp()`, `aspect-ratio`, `object-fit`, `text-wrap: balance`, `:focus-visible`, `:user-invalid`, media queries e `prefers-reduced-motion`
 - **Bootstrap 5.3.3** (CDN jsDelivr), personalizado pelo CSS próprio:
   - Grelha: `container`, `row`, `col-*`, `row-cols-*`, `g-*`/`gx-*`/`gy-*`
   - Menu: `navbar`, `navbar-expand-lg`, `navbar-toggler` e `collapse`. O único JavaScript do site é o do Bootstrap, para o menu abrir no telemóvel
@@ -94,6 +96,11 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 | 1 | Botões (`.btn`) | `background-color`, `color`, `border-color`, `transform` (sobe 2 px) | 0,2 s | `ease-in-out` e `ease-out` |
 | 2 | Cartões (áreas, cursos, notícias) | `box-shadow`, `transform` (sobe 4 px) | 0,3 s | `cubic-bezier(0.2, 0.8, 0.2, 1)` |
 | 3 | Mudança de modo (página, cabeçalho, cartões, formulário, rodapé) | `background-color`, `color`, `border-color` | 0,4 s | `ease` |
+| 4 | Cartões dos cursos a virar | `transform` (`rotateY(180deg)`) e `visibility` com atraso de 0,3 s | 0,6 s | `cubic-bezier(0.4, 0.2, 0.2, 1)` |
+
+### Como o cartão vira sem JavaScript
+
+Cada cartão tem uma checkbox escondida. As setas → e ← são `<label>` dessa checkbox: ao clicar, a checkbox muda e o seletor `.virar-input:checked + .cartao-curso-interior` roda só esse cartão. A frente e o verso ficam na mesma célula de uma grelha (`grid-area: 1 / 1`), por isso o cartão fica com a altura do lado maior. O lado de trás fica com `visibility: hidden`, para o teclado e os leitores de ecrã não lerem o que não se vê.
 
 Extra: as ligações do menu mudam de cor e fundo em 0,2 s (`linear`) e a seta dos cartões de áreas desliza 4 px (`ease-out`).
 
@@ -106,7 +113,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Contactos:** [página do serviço no iefp.pt](https://www.iefp.pt/detalheservico?id=323697) e [Instagram do centro](https://www.instagram.com/riomeaocontigo_iefp/) (email)
 - **Cursos:** [iefponline](https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao&ccentro=195)
 - **Áreas:** [formação para jovens](https://www.iefp.pt/formacao-para-jovens), [para adultos](https://www.iefp.pt/formacao-para-adultos) e [RVCC](https://www.iefp.pt/rvcc) no iefp.pt
-- **Notícias e fotos das notícias:** [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/)
+- **Feed e fotos do feed:** [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_iefp/)
 - **Cores e fontes:** CSS do [iefp.pt](https://www.iefp.pt)
 - **Estrutura de referência:** página inicial do [FAD do IEFP](https://fad.iefp.pt)
 - **Ícones:** [Bootstrap Icons](https://icons.getbootstrap.com/)
@@ -120,6 +127,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Scroll horizontal no telemóvel.** As linhas com `g-5` do Bootstrap têm margens negativas maiores do que a margem do contentor e saíam da página. Troquei para `gx-4 gy-5`.
 - **Interruptor escondido no telemóvel.** Estava dentro do menu que fecha. Passei-o para fora do menu, entre o logótipo e o botão, e uso `order` para ficar no fim no computador.
 - **Cartões apertados no tablet.** A 768 px os 3 cartões ficavam com 216 px de largura, o mesmo erro do FAD. Agora só ficam em 3 colunas a partir de 992 px.
+- **Detalhes dos cursos numa secção à parte.** Obrigava a saltar para baixo e voltar. Passaram para o verso de cada cartão, que vira com uma checkbox e CSS.
 - **Fotos do Instagram com pouca resolução e formatos diferentes.** Uso `aspect-ratio` e `object-fit: cover` para ficarem todas com o mesmo formato.
 - **Cache do GitHub Pages.** Depois de cada push o site publicado demorava a mostrar o CSS novo. Para testar, forçava o recarregamento dos ficheiros.
 

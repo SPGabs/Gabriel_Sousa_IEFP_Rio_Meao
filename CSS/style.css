@@ -903,6 +903,26 @@ button:focus-visible,
     }
 }
 
+/* Computador largo: 4 cartões por linha ficam estreitos, por isso no verso
+   o nome do campo passa para cima do valor */
+@media (min-width: 1200px) {
+    .cartao-verso dl {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .cartao-verso dt {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--cor-texto-suave);
+    }
+
+    .cartao-verso dd {
+        margin-bottom: 0.4rem;
+    }
+}
+
 /* Computador: interruptor depois dos links do menu */
 @media (min-width: 992px) {
     .navbar-collapse {
