@@ -197,8 +197,10 @@ figure {
     margin: 0;
 }
 
-/* Compensa o cabeçalho fixo ao saltar para uma secção */
-[id] {
+/* Compensa o cabeçalho fixo ao saltar para uma secção.
+   Só nas secções: se fosse em todos os [id], a checkbox do modo escuro
+   também o recebia e a página subia a cada clique. */
+section[id] {
     scroll-margin-top: 5.5rem;
 }
 
