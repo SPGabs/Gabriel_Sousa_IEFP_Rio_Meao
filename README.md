@@ -60,7 +60,7 @@ Ao analisar o FAD em várias larguras de ecrã encontrei problemas que quis evit
 
 ## 6. Modos diurno e noturno
 
-O botão está no cabeçalho, sempre visível, também no telemóvel. É uma pílula com o texto «Modo escuro» dentro: escura quando está desligado, clara quando está ligado. A bola desliza de um lado para o outro e a lua dá lugar ao sol. No telemóvel pequeno fica só com a bola.
+O botão está no cabeçalho, sempre visível, também no telemóvel. É uma pílula com o texto «Modo escuro» dentro: escura quando está desligado, clara quando está ligado. A bola é uma pequena janela com uma paisagem feita só em CSS: de dia tem céu verde-lima, sol e colinas claras; de noite o céu escurece, aparecem estrelas e um círculo da cor do céu passa por cima do sol e deixa uma lua em quarto crescente. A ideia veio de uma [animação dia/noite no Pinterest](https://i.pinimg.com/originals/87/f9/ee/87f9eefefc480ce4416d353cd060dfc0.gif), refeita com código e cores próprias. No telemóvel pequeno fica só com a bola.
 
 Funciona **sem JavaScript**: é uma checkbox escondida com um `<label>` por cima, e o CSS usa `:root:has(#modo-escuro:checked)` para trocar os valores das variáveis. O resto da folha de estilos não muda.
 
@@ -100,7 +100,7 @@ O Bootstrap também passa a usar as nossas cores através de `--bs-body-bg` e `-
 | 2 | Cartões (áreas, cursos, notícias) | `box-shadow`, `transform` (sobe 4 px) | 0,3 s | `cubic-bezier(0.2, 0.8, 0.2, 1)` |
 | 3 | Mudança de modo (página, cabeçalho, cartões, formulário, rodapé) | `background-color`, `color`, `border-color` | 0,4 s | `ease` |
 | 4 | Cartões dos cursos a virar | `transform` (`rotateY(180deg)`) e `visibility` com atraso de 0,3 s | 0,6 s | `cubic-bezier(0.4, 0.2, 0.2, 1)` |
-| 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform` da bola; `opacity` e `transform` da lua e do sol | 0,3 a 0,4 s | `ease`, `cubic-bezier(0.4, 0, 0.2, 1)` e `cubic-bezier(0.34, 1.56, 0.64, 1)` (com ressalto) |
+| 5 | Botão do modo escuro | `background-color`, `color`, `padding` da pílula; `transform`, `background-color` e `box-shadow` da janela; `transform` do círculo que faz a lua; `opacity` das estrelas (com atraso de 0,15 s) | 0,4 a 0,5 s | `ease`, `cubic-bezier(0.4, 0, 0.2, 1)` e `cubic-bezier(0.34, 1.56, 0.64, 1)` (com ressalto) |
 
 ### Como o cartão vira sem JavaScript
 
@@ -121,6 +121,7 @@ A lista completa, com datas de consulta, está em [FONTES.md](FONTES.md). Resumo
 - **Cores e fontes:** CSS do [iefp.pt](https://www.iefp.pt)
 - **Estrutura de referência:** página inicial do [FAD do IEFP](https://fad.iefp.pt)
 - **Logótipo e favicon:** símbolo oficial do IEFP, publicado no [FAD](https://fad.iefp.pt)
+- **Inspiração do botão dia/noite:** [animação no Pinterest](https://i.pinimg.com/originals/87/f9/ee/87f9eefefc480ce4416d353cd060dfc0.gif) (só a ideia; o código e as cores são próprios)
 - **Ícones:** [Bootstrap Icons](https://icons.getbootstrap.com/)
 - **Tipografia:** [Google Fonts](https://fonts.google.com/)
 

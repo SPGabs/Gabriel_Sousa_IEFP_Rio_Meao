@@ -76,3 +76,9 @@ Todas da conta [@riomeaocontigo_iefp](https://www.instagram.com/riomeaocontigo_i
 | Ficheiro | Origem | Notas |
 |---|---|---|
 | iefp-simbolo.svg | Símbolo oficial do IEFP, publicado em [fad.iefp.pt](https://fad.iefp.pt/theme/mb2nlchildtemplate/alfasoft/assets/images/iefp-mark.svg) | Descarregado a 24/11/2026. Usado no favicon e no cabeçalho. O Rio Meão não tem logótipo próprio |
+
+## Inspiração
+
+| O quê | Link | Uso |
+|---|---|---|
+| Animação dia/noite | [GIF no Pinterest](https://i.pinimg.com/originals/87/f9/ee/87f9eefefc480ce4416d353cd060dfc0.gif) | Ideia para o botão do modo escuro. Nada foi copiado: a cena foi feita em CSS com as cores do IEFP |
